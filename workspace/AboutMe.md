@@ -2,11 +2,9 @@
 
 This book is completely Free and Open Source.
 
-If you found this cysec-all-in-one book valuable and wish to contribute, consider supporting my efforts via cryptocurrency. Thanks!
-
-Here’s a more polished and formal revision of your text:
-
 **I have developed a range of practical scenarios for each topic. Should you need access to these resources, please do not hesitate to contact me. Furthermore, I have delivered over 100 tailored Cybersecurity Assessment Reports for a wide variety of organizations, effectively addressing their distinct risk profiles and specific requirements.**
+
+If you found this cysec-all-in-one book valuable and wish to contribute, consider supporting my efforts via cryptocurrency. Thanks!
 
 ```md
 0xde5D732a5AB44832E1c69b18be30834639F44A2c
