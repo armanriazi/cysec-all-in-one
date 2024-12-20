@@ -1,0 +1,49 @@
+
+[1] Meta Brains
+[1] https://medium.com/@h13.dev/understanding-broken-access-control-a-comprehensive-guide-3742b3017d2e
+[2] https://medium.com/@mangeshmatke/understanding-and-mitigating-broken-access-control-a-comprehensive-guide-4c59e55e28d8
+[3] https://medium.com/purplebox/broken-access-control-f82235ddf888
+[4] https://hackernoon.com/what-is-broken-access-control-and-why-should-you-care
+[5] https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/
+[6] https://heimdalsecurity.com/blog/broken-access-control/
+[7] https://qawerk.com/blog/broken-access-control/
+[8] https://gogetsecure.com/broken-access-control/
+[9] https://beaglesecurity.com/blog/support/vulnerability/broken-access-control.html
+[10] https://subrosacyber.com/en/blog/what-is-broken-access-control
+[11] https://blog.cyberneticsplus.com/breaking-down-the-consequences-of-broken-access-control-how-to-protect-your-system-from-cfe5083a33a4
+[12] https://ltblogs.fhsu.edu/learner/2024/01/31/what-is-broken-access-control-examples-and-prevention/
+[13] https://medium.com/@adithyanashok406/understanding-broken-access-control-a-critical-security-vulnerability-c92e4e1bf64f
+[14] https://subrosacyber.com/en/blog/broken-access-control-attack-example
+[15] https://www.omnicybersecurity.com/broken-access-control-vulnerabilities-explained/
+
+[1] https://medium.com/@h13.dev/understanding-broken-access-control-a-comprehensive-guide-3742b3017d2e
+[2] https://medium.com/@mangeshmatke/understanding-and-mitigating-broken-access-control-a-comprehensive-guide-4c59e55e28d8
+[3] https://medium.com/purplebox/broken-access-control-f82235ddf888
+[4] https://hackernoon.com/what-is-broken-access-control-and-why-should-you-care
+[5] https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/
+[6] https://heimdalsecurity.com/blog/broken-access-control/
+[7] https://qawerk.com/blog/broken-access-control/
+[8] https://gogetsecure.com/broken-access-control/
+[9] https://beaglesecurity.com/blog/support/vulnerability/broken-access-control.html
+[10] https://subrosacyber.com/en/blog/what-is-broken-access-control
+[11] https://blog.cyberneticsplus.com/breaking-down-the-consequences-of-broken-access-control-how-to-protect-your-system-from-cfe5083a33a4
+[12] https://ltblogs.fhsu.edu/learner/2024/01/31/what-is-broken-access-control-examples-and-prevention/
+[13] https://medium.com/@adithyanashok406/understanding-broken-access-control-a-critical-security-vulnerability-c92e4e1bf64f
+[14] https://subrosacyber.com/en/blog/broken-access-control-attack-example
+[15] https://www.omnicybersecurity.com/broken-access-control-vulnerabilities-explained/
+
+[1] https://medium.com/@h13.dev/understanding-broken-access-control-a-comprehensive-guide-3742b3017d2e
+[2] https://medium.com/@mangeshmatke/understanding-and-mitigating-broken-access-control-a-comprehensive-guide-4c59e55e28d8
+[3] https://medium.com/purplebox/broken-access-control-f82235ddf888
+[4] https://hackernoon.com/what-is-broken-access-control-and-why-should-you-care
+[5] https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/
+[6] https://heimdalsecurity.com/blog/broken-access-control/
+[7] https://qawerk.com/blog/broken-access-control/
+[8] https://gogetsecure.com/broken-access-control/
+[9] https://beaglesecurity.com/blog/support/vulnerability/broken-access-control.html
+[10] https://subrosacyber.com/en/blog/what-is-broken-access-control
+[11] https://blog.cyberneticsplus.com/breaking-down-the-consequences-of-broken-access-control-how-to-protect-your-system-from-cfe5083a33a4
+[12] https://ltblogs.fhsu.edu/learner/2024/01/31/what-is-broken-access-control-examples-and-prevention/
+[13] https://medium.com/@adithyanashok406/understanding-broken-access-control-a-critical-security-vulnerability-c92e4e1bf64f
+[14] https://subrosacyber.com/en/blog/broken-access-control-attack-example
+[15] https://www.omnicybersecurity.com/broken-access-control-vulnerabilities-explained/
