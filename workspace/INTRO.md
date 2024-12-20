@@ -1,4 +1,8 @@
-# CyberSecurity : The Complete Architecture's Guide
+# CyberSecurity
+
+**I have developed a range of practical scenarios for each topic. Should you need access to these resources, please do not hesitate to contact me. Furthermore, I have delivered over 100 tailored Cybersecurity Assessment Reports for a wide variety of organizations, effectively addressing their distinct risk profiles and specific requirements.**
+
+## The Complete Architecture's Guide
 
 <p align="center">
   <img src="https://i.imgur.com/KTEorEU.png" alt="CyberSecurity : The Complete Architecture's Guide" height="250px">
@@ -163,4 +167,3 @@ These metrics guide organizations in their threat detection efforts, helping the
 | **Insecure Direct Object Reference (IDOR)** | Allows attackers to access or modify objects that they are not authorized to. | Medium     | Parameter manipulation in URL requests   | ~20%           | Authorization checks                       | Implement access controls, validate user permissions   | Accessing other users' resources                | URL manipulation                           |
 | **Open Redirect** | Allows an attacker to redirect users to an untrusted site, often used for phishing.   | Medium       | Link manipulation                         | ~10%           | Input validation, whitelisting           | Validate redirect URLs, use a whitelist for valid URLs | Phishing attacks, redirecting to malicious sites | Redirecting with query parameters          |
 | **HTTP Response Splitting** | Attacker manipulates HTTP headers to inject additional responses.             | Medium       | Unvalidated inputs in headers             | ~5%            | Header validation                         | Sanitize user inputs, validate and encode headers      | HTTP header injection, session fixation        | Header injection                           |
-
