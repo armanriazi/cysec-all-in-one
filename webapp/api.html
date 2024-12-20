@@ -1,0 +1,871 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>APIs - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="../INTRO.html"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="../threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="../webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="../webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item expanded "><a href="../webapp/api.html" class="active"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item "><a href="../webapp/ssr.html"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="../audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="../identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="../identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="../network/network.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item "><a href="../network/firewall.html"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="../network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="../network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="../network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="../network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="../network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="../network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="../network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="../network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="../cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="../data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="../data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="../data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="../searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="../database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="../malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="../penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="../linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="../linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="../linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="../protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="../protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="../protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="../protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="../protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="../standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="../other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="../other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="../other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="../other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../attack/attack.html"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="../risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="../Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="../Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//webapp/api.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-of-api"><a class="header" href="#introduction-of-api">Introduction of API</a></h1>
+<h2 id="dom"><a class="header" href="#dom">DOM</a></h2>
+<p><strong>The Broken Access Like DOM</strong> (Domain) in security systems refers to <strong>a vulnerability that allows attackers to bypass authentication</strong> mechanisms or gain unauthorized access to sensitive resources within an organization’s network. This type of vulnerability often occurs when there are weaknesses in how user accounts, permissions, or access controls are managed across different domains or systems.</p>
+<h3 id="how-it-works"><a class="header" href="#how-it-works">How it works</a></h3>
+<ol>
+<li>Multiple domains or systems exist within an organization’s network.</li>
+<li>Each domain has its own set of users and access controls.</li>
+<li>There are inconsistencies or gaps in how these access controls are implemented or enforced across domains.</li>
+<li>An attacker exploits these inconsistencies to gain access to a domain they shouldn’t have access to.</li>
+</ol>
+<h3 id="examples-of-vulnerabilities"><a class="header" href="#examples-of-vulnerabilities">Examples of vulnerabilities</a></h3>
+<ul>
+<li>Weak password <strong>policies</strong> across domains</li>
+<li><strong>Inadequate multi-factor</strong> authentication implementation</li>
+<li>Incorrectly configured firewall <strong>rules</strong>[S1]</li>
+<li><strong>Unpatched</strong>[S1] vulnerabilities in applications used across domains</li>
+<li><strong>Misconfigured</strong>[S1] identity federation services</li>
+</ul>
+<h3 id="impact-on-security"><a class="header" href="#impact-on-security">Impact on security</a></h3>
+<p>The Broken Access Like DOM vulnerability can lead to significant <strong>security risks</strong>:</p>
+<ul>
+<li><strong>Unauthorized access</strong> to sensitive data</li>
+<li>Potential <strong>lateral movement</strong> within the network</li>
+<li>Increased risk of <strong>data breaches</strong></li>
+<li><strong>Difficulty in tracking</strong> and managing user activities across domains</li>
+<li><strong>Compliance issues</strong> due to inadequate access control measures</li>
+</ul>
+<h3 id="mitigation-strategies"><a class="header" href="#mitigation-strategies">Mitigation strategies</a></h3>
+<p>To address this vulnerability, organizations should implement:</p>
+<ul>
+<li>Centralized <strong>identity management</strong> solutions</li>
+<li>Consistent <strong>access control policies</strong> across all domains</li>
+<li><strong>Regular audits</strong> and <strong>penetration testing</strong></li>
+<li>Implementation of least <strong>privilege principle</strong></li>
+<li><strong>Continuous monitoring</strong> of user activities and access patterns</li>
+</ul>
+<h3 id="best-practices"><a class="header" href="#best-practices">Best practices</a></h3>
+<ul>
+<li>
+<p><strong>Implement a zero-trust model</strong> for network access</p>
+</li>
+<li>
+<p>Use <strong>role-based access control</strong> consistently across all domains</p>
+</li>
+<li>
+<p>Conduct regular <strong>security assessments</strong> and <strong>compliance checks</strong></p>
+</li>
+<li>
+<p><strong>Educate employees</strong> about the importance of secure practices across all systems</p>
+</li>
+<li>
+<p>Keep all software and systems <strong>up-to-date</strong> with the latest security patches</p>
+</li>
+</ul>
+<p>By understanding and addressing the Broken Access Like DOM vulnerability, organizations can significantly strengthen their overall security posture and protect against various types of cyber threats.</p>
+<h2 id="xss"><a class="header" href="#xss">XSS</a></h2>
+<p>The named XSS (Cross-Site Scripting) attack in security systems is known as <strong>“Stored Cross-Site Scripting” or “Persistent Cross-Site Scripting.”</strong> This type of attack involves storing malicious scripts <strong>on a website</strong> that will be executed by other users when they visit the page.</p>
+<h3 id="characteristics-of-stored-xss"><a class="header" href="#characteristics-of-stored-xss">Characteristics of Stored XSS</a></h3>
+<ul>
+<li>The attacker injects malicious <strong>JavaScript code into a database or file system</strong> that is accessed by the web application.</li>
+<li>The injected script remains stored on the server until it is retrieved and executed by a user’s browser.</li>
+<li>It can affect all users who access the compromised content, regardless of whether they have an account or not.</li>
+</ul>
+<h3 id="examples-of-stored-xss-attacks"><a class="header" href="#examples-of-stored-xss-attacks">Examples of Stored XSS Attacks</a></h3>
+<ul>
+<li>
+<p>Comment sections where users can <strong>post comments</strong>[S2] without moderation</p>
+</li>
+<li>
+<p><strong>File upload</strong>[S1] systems where files are stored on the server and displayed to others</p>
+</li>
+<li>
+<p><strong>Search functionality that displays results from a database</strong>[S1]</p>
+</li>
+</ul>
+<h3 id="prevention-strategies"><a class="header" href="#prevention-strategies">Prevention Strategies</a></h3>
+<ul>
+<li>
+<p>Implement proper <strong>input validation and sanitization at every point where user data is processed</strong></p>
+</li>
+<li>
+<p>Use <strong>Content Security Policy (CSP)</strong>[S1] to restrict which sources of content are allowed to be executed</p>
+</li>
+<li>
+<p>Regularly <strong>update and patch</strong> web applications to fix vulnerabilities</p>
+</li>
+<li>
+<p><strong>Educate users</strong> about the risks of clicking on suspicious links or downloading attachments from unknown sources</p>
+</li>
+</ul>
+<h3 id="impact-of-stored-xss"><a class="header" href="#impact-of-stored-xss">Impact of Stored XSS</a></h3>
+<ul>
+<li>Can lead to <strong>unauthorized access</strong> to sensitive data</li>
+<li>Allows attackers to <strong>steal user sessions or cookies</strong>[S1]</li>
+<li>Enables malicious <strong>redirections to phishing sites or malware downloads</strong></li>
+<li>Can <strong>compromise the integrity</strong> of the entire web application</li>
+</ul>
+<p>Stored XSS attacks are particularly dangerous because they can affect users who didn’t interact with the attacker directly, making them a significant threat to overall system security.</p>
+<h2 id="ssrf"><a class="header" href="#ssrf">SSRF</a></h2>
+<h3 id="what-is-ssrf"><a class="header" href="#what-is-ssrf">What is SSRF?</a></h3>
+<p>SSRF stands for <strong>Server-Side Request Forgery</strong>[S3]. It is a type of web application vulnerability where an attacker can induce the web application to send a request to any arbitrary internal or external server, potentially exposing internal network services or data.</p>
+<h3 id="how-ssrf-works"><a class="header" href="#how-ssrf-works">How SSRF works</a></h3>
+<ol>
+<li>An attacker sends a specially <strong>crafted HTTP request</strong>[S1] to the vulnerable web application.</li>
+<li>The web application processes the request and makes another request to a server specified by the attacker.</li>
+<li>The attacker can <strong>manipulate the request</strong> to target internal servers, databases, or other sensitive resources.</li>
+</ol>
+<h3 id="types-of-ssrf-attacks"><a class="header" href="#types-of-ssrf-attacks">Types of SSRF attacks</a></h3>
+<ol>
+<li>Internal SSRF: Targets internal servers within the organization’s network.</li>
+<li>External SSRF: Targets external servers outside the organization’s network.</li>
+<li><strong>Blind SSRF: Occurs when the application doesn’t return the response content to the attacker.</strong></li>
+</ol>
+<h3 id="examples-of-ssrf-attacks"><a class="header" href="#examples-of-ssrf-attacks">Examples of SSRF attacks</a></h3>
+<ol>
+<li>Attacker <strong>targets internal DNS servers</strong>[S1] to obtain sensitive information.</li>
+<li>Attacker <strong>exploits internal web servers</strong> to steal data or inject malware.</li>
+<li>Attacker <strong>manipulates the application</strong> to connect to unintended external services.</li>
+</ol>
+<h3 id="prevention-strategies-1"><a class="header" href="#prevention-strategies-1">Prevention strategies</a></h3>
+<ol>
+<li><strong>Validate and sanitize</strong> all user inputs.</li>
+<li>Implement strict <strong>access controls</strong> on internal services.</li>
+<li>Use <strong>Content Security Policy (CSP)</strong> to restrict where resources can be loaded from.</li>
+<li>Implement <strong>rate limiting and IP blocking</strong>.</li>
+<li>Regularly <strong>update and patch</strong> web applications.</li>
+</ol>
+<h3 id="key-considerations"><a class="header" href="#key-considerations">Key considerations</a></h3>
+<ul>
+<li>SSRF can lead to significant security risks if <strong>left unchecked</strong>.</li>
+<li>It often requires careful <strong>analysis of application behavior</strong> to detect.</li>
+<li>Proper input validation and output <strong>encoding are crucial defenses against SSRF</strong>.</li>
+</ul>
+<h2 id="property-authority"><a class="header" href="#property-authority">Property Authority</a></h2>
+<p>The named property authority attack is a type of vulnerability that can occur in various security systems, particularly those relying on access control mechanisms. This attack <strong>exploits weaknesses in how permissions or authorities are assigned and managed within a system.</strong></p>
+<h3 id="how-it-works-1"><a class="header" href="#how-it-works-1">How it works</a></h3>
+<p>In a typical scenario:</p>
+<ol>
+<li><strong>An attacker gains unauthorized access</strong> to a system or network.</li>
+<li>They discover a way to manipulate or <strong>alter the named properties (permissions)</strong> associated with user accounts or resources.</li>
+<li>By modifying these properties, <strong>the attacker can elevate their privileges</strong> or gain access to restricted areas without being detected.</li>
+</ol>
+<h3 id="examples-of-affected-systems"><a class="header" href="#examples-of-affected-systems">Examples of affected systems</a></h3>
+<p>This type of attack can affect various types of security systems, including:</p>
+<ul>
+<li>Access Control Systems (<strong>ACS</strong>)</li>
+<li>Identity and Access Management (<strong>IAM</strong>) solutions</li>
+<li>Network Security Groups (<strong>NSGs</strong>)</li>
+<li><strong>Cloud</strong>-based security platforms</li>
+</ul>
+<h3 id="mitigation-strategies-1"><a class="header" href="#mitigation-strategies-1">Mitigation strategies</a></h3>
+<p>To prevent or mitigate named property authority attacks:</p>
+<ul>
+<li>Implement strict access controls and <strong>least privilege principles</strong></li>
+<li><strong>Regularly audit</strong> and <strong>review user permissions</strong></li>
+<li>Use role-based access control (<strong>RBAC</strong>) instead of static permissions</li>
+<li>Implement multi-factor authentication (<strong>MFA</strong>) for all users</li>
+<li>Conduct regular <strong>penetration testing</strong> and <strong>vulnerability assessments</strong></li>
+</ul>
+<h3 id="real-world-implications"><a class="header" href="#real-world-implications">Real-world implications</a></h3>
+<p>Named property authority attacks have significant real-world implications:</p>
+<ul>
+<li><strong>Data breaches</strong>: Attackers may gain unauthorized access to sensitive data.</li>
+<li><strong>System compromise</strong>: Malicious actors could potentially take control of critical systems.</li>
+<li><strong>Compliance issues</strong>: Organizations may face regulatory penalties for failing to protect user data and system integrity.</li>
+</ul>
+<h2 id="apis"><a class="header" href="#apis">APIs</a></h2>
+<h3 id="named-api-vulnerabilities"><a class="header" href="#named-api-vulnerabilities">Named API Vulnerabilities</a></h3>
+<ol>
+<li>
+<p>Insecure Direct Object Reference (<strong>IDOR</strong>):</p>
+<ul>
+<li>Occurs when an application provides <strong>direct access to objects based on user-supplied input</strong> [3].</li>
+<li>Attackers can bypass authorization and access resources in the system directly, such as database records or files [3].</li>
+</ul>
+</li>
+<li>
+<p>Broken Object Level Authorization (<strong>BOLA</strong>):</p>
+<ul>
+<li>Similar to IDOR, BOLA is defined as “IDOR in APIs” [3].</li>
+<li><strong>APIs often expose endpoints handling object identifiers, creating a wide attack surface</strong>[S1] [3].</li>
+</ul>
+</li>
+<li>
+<p>Missing Function Level Access Control (<strong>MFLAC</strong>):</p>
+<ul>
+<li><strong>Refers to broken access control on functions rather than objects</strong> [3].</li>
+<li>Web applications should <strong>verify function-level access rights</strong> for all requested actions by any user [3].</li>
+</ul>
+</li>
+<li>
+<p>Broken Access Control (<strong>BAC</strong>):</p>
+<ul>
+<li>Represents a security <strong>flaw within applications</strong> that allows individuals to gain access to data and functions they are not authorized for [1].</li>
+<li>Can occur due to weak or <strong>improperly implemented access control measures</strong> [1].</li>
+</ul>
+</li>
+</ol>
+<h3 id="key-considerations-1"><a class="header" href="#key-considerations-1">Key Considerations</a></h3>
+<ul>
+<li>These vulnerabilities often result from <strong>misconfigurations, insufficient testing, or inadequate enforcement of access control mechanisms</strong> [1].</li>
+<li>They can lead to unauthorized data exposure, full system compromise, and other security issues [2].</li>
+<li>Common weaknesses <strong>associated with broken access control</strong> include insecure direct object references, insufficient authentication, and misconfigured access control mechanisms [1].</li>
+</ul>
+<h3 id="prevention-strategies-2"><a class="header" href="#prevention-strategies-2">Prevention Strategies</a></h3>
+<ol>
+<li>Implement secure <strong>authentication and authorization</strong> mechanisms from the outset [1].</li>
+<li><strong>Validate user inputs</strong> and declare authorized access at the code level [1].</li>
+<li>Include access control unit and integration <strong>tests</strong> in testing routines [1].</li>
+<li>Enforce role-based access control (<strong>RBAC</strong>) and attribute-based access control (<strong>ABAC</strong>) mechanisms [1].</li>
+<li>Ensure effective access control is enforced on the <strong>trusted server-side</strong> or <strong>server-less API</strong> [1].</li>
+</ol>
+<h2 id="csrf"><a class="header" href="#csrf">CSRF</a></h2>
+<h3 id="what-is-csrf"><a class="header" href="#what-is-csrf">What is CSRF?</a></h3>
+<p><strong>CSRF stands for Cross-Site Request Forgery</strong>. It is a type of web application security vulnerability that allows an attacker to trick a web application into performing unintended actions. Specifically, it occurs when an attacker <strong>tricks a user into submitting a form or clicking a link that performs an unintended action</strong> on behalf of the user.</p>
+<h3 id="how-csrf-works"><a class="header" href="#how-csrf-works">How CSRF works</a></h3>
+<ol>
+<li>An attacker creates a malicious website or <strong>email that contains a hidden form or button</strong>[S1].</li>
+<li>The form or button submits a request to the victim’s trusted site.</li>
+<li>The request is executed without the user’s knowledge or consent.</li>
+</ol>
+<h3 id="key-points-about-csrf"><a class="header" href="#key-points-about-csrf">Key points about CSRF</a></h3>
+<ul>
+<li><strong>It relies on the user</strong> already being authenticated on the targeted site.</li>
+<li><strong>It doesn’t involve stealing credentials, but rather manipulating the user’s existing session.</strong></li>
+<li>It’s often <strong>combined with other attacks</strong> to increase its impact.</li>
+</ul>
+<h3 id="examples-of-csrf-attacks"><a class="header" href="#examples-of-csrf-attacks">Examples of CSRF attacks</a></h3>
+<ol>
+<li>Changing account <strong>settings</strong></li>
+<li>Transferring <strong>funds</strong></li>
+<li><strong>Deleting</strong> content</li>
+<li><strong>Modifying</strong> personal information</li>
+</ol>
+<h3 id="prevention-techniques"><a class="header" href="#prevention-techniques">Prevention techniques</a></h3>
+<ol>
+<li><strong>Implementing the Same-Origin Policy</strong></li>
+<li><strong>Using tokens or cookies that are unique per session</strong></li>
+<li><strong>Validating referrer headers</strong></li>
+<li><strong>Using double-submit cookies</strong></li>
+<li><strong>Implementing Content Security Policy (CSP)</strong></li>
+</ol>
+<h3 id="best-practices-1"><a class="header" href="#best-practices-1">Best practices</a></h3>
+<ul>
+<li>Always <strong>validate incoming requests</strong>, especially those involving sensitive operations.</li>
+<li><strong>Use tokens or cookies that are unique per session.</strong></li>
+<li><strong>Educate users</strong> about the risks of clicking suspicious links or opening attachments from unknown sources.</li>
+<li>Regularly <strong>update and patch</strong> your web application to fix known vulnerabilities.</li>
+</ul>
+<hr />
+<h1 id="understanding-api-vulnerabilities-bola-idor-bac-and-mflac"><a class="header" href="#understanding-api-vulnerabilities-bola-idor-bac-and-mflac">Understanding API Vulnerabilities: BOLA, IDOR, BAC, and MFLAC</a></h1>
+<p>In the realm of web application security, several vulnerabilities can arise from improper authorization checks. Understanding these vulnerabilities is crucial to safeguard sensitive data from unauthorized access. Among these, <strong>Broken Object Level Authorization (BOLA)</strong>, <strong>Insecure Direct Object References (IDOR)</strong>, <strong>Broken Access Control (BAC)</strong>, and <strong>Missing Function Level Access Control (MFLAC)</strong> are critical issues that can lead to severe consequences if not addressed. This comprehensive guide will delve deeper into each of these vulnerabilities, accompanied by real-world scenarios, detailed explanations, and practical testing methods using tools like <strong>Metasploit</strong> and <strong>Burp Suite</strong>.</p>
+<p>Sure! Here is the updated table with the addition of <strong>BFLA</strong> (Business Logic Abuse):</p>
+<h2 id="mitigation-strategies-for-vulnerabilities"><a class="header" href="#mitigation-strategies-for-vulnerabilities">Mitigation Strategies for Vulnerabilities</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Vulnerability</th><th>MITRE ATT&amp;CK TTPs</th><th>Detailed Descriptions of Mitigations</th><th>Reflected on Pattern</th></tr></thead><tbody>
+<tr><td><strong>BOLA</strong></td><td><strong>T1070</strong> - Indicator Removal on Host</td><td>Ensure that access checks are enforced for each request, verifying that the requesting user is authorized to access the specified resource. Use unique and unpredictable identifiers for resources to prevent enumeration attacks.</td><td>├─ T1070: Event Logged<br>│   ├─ Sub-Technique: Implement Controls<br>│   │   └─ Procedure: Verify Log Entries</td></tr>
+<tr><td><strong>IDOR</strong></td><td><strong>T1069</strong> - Permission Groups Discovery</td><td>Use non-predictable IDs and check permissions rigorously before granting access to any user document or resource. Implement input filtering/validation to ensure correct format for identifiers.</td><td>├─ T1069: User Permission Justification<br>│   ├─ Sub-Technique: Validate Identifiers<br>│   │   └─ Procedure: Check Role Permissions</td></tr>
+<tr><td><strong>BAC</strong></td><td><strong>T1075</strong> - Pass the Hash</td><td>Implement a middleware that verifies user roles before allowing access to sensitive APIs. Ensure consistent role checks at all entry points for critical operations.</td><td>├─ T1075: Security Token Verification<br>│   ├─ Sub-Technique: Middleware Integration<br>│   │   └─ Procedure: Role Check at Entry Point</td></tr>
+<tr><td><strong>MFLAC</strong></td><td><strong>T1068</strong> - Exploit Public-Facing Application</td><td>Apply access control checks at the start of sensitive functions to verify user permissions. Utilize express middleware for consistent access validation across different routes.</td><td>├─ T1068: Function Permission Requirement<br>│   ├─ Sub-Technique: Validate User Actions<br>│   │   └─ Procedure: Apply Access Controls on Functions</td></tr>
+<tr><td><strong>BFLA</strong></td><td><strong>T1071</strong> - Application Layer Protocol</td><td>Implement strict input validation to ensure that business logic is not being manipulated. Use rate limiting to control the number of requests and establish anomaly detection algorithms to identify suspicious patterns.</td><td>├─ T1071: Validate Business Logic<br>│   ├─ Sub-Technique: Input Validation<br>│   │   └─ Procedure: Anomaly Detection and Rate Limiting</td></tr>
+</tbody></table>
+</div>
+<h3 id="bola-mitigation-strategies"><a class="header" href="#bola-mitigation-strategies">BOLA Mitigation Strategies</a></h3>
+<p><strong>BOLA:</strong>  <br>1. Implement strict authorization checks to ensure users can only access their resources.<br>2. Use unique identifiers for user-specific endpoints that require authorization checks.<br>3. Leverage role-based access control (RBAC) or attribute-based access control (ABAC).</p>
+<p><strong>IDOR:</strong> <br>1. Replace predictable identifiers with non-sequential, random identifiers.<br>2. Enforce strict access controls based on user roles.<br>3. Conduct input validation to ensure that users cannot manipulate identifiers.</p>
+<p><strong>BAC:</strong> <br>1. Implement role-based access controls to restrict sensitive operations.<br>2. Validate user roles on every sensitive operation.<br>3. Utilize secure coding practices to prevent bypassing checks (e.g., validating with sessions and tokens).</p>
+<p><strong>MFLAC:</strong>  <br>1. Enforce function-level access controls by validating user permissions before executing sensitive actions.<br>2. Utilize middleware for consistent access checks across all routes.<br>3. Regularly audit roles and permissions to ensure they align with business processes.</p>
+<p><strong>BFLA</strong> is a security vulnerability that occurs when an application fails to properly enforce access controls for different functions or features based on user roles. This flaw allows unauthorized users to access functionalities they should not be allowed to use, leading to potential security breaches.</p>
+<p>To prevent BFLA, enforce authorization checks on the server side to ensure that each user has the appropriate permissions before executing sensitive functions. Regular security testing should also be conducted to identify and fix any access control issues.</p>
+<h1 id="all-types-of-vulnerabilities-of-apis"><a class="header" href="#all-types-of-vulnerabilities-of-apis">All types of vulnerabilities of APIs</a></h1>
+<h2 id="broken-function-level-authorization-bfla"><a class="header" href="#broken-function-level-authorization-bfla">Broken Function Level Authorization (BFLA)</a></h2>
+<p>Consider a web application with user roles such as “Admin” and “User.” The application has a function to delete user accounts, which should only be accessible to Admins.</p>
+<ul>
+<li>
+<p><strong>Normal Behavior</strong>:</p>
+<ul>
+<li>Admin User: Can access the delete functionality at <code>DELETE /users/{id}</code>.</li>
+<li>Regular User: Should be restricted from accessing this function.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exploit</strong>:
+An attacker who has logged in as a regular user discovers the delete endpoint and sends a request like:</p>
+<pre><code>DELETE /users/123
+</code></pre>
+<p>Since the application lacks proper authorization checks, the regular user is able to delete the account of user ID 123, which they should not have permission to do.</p>
+</li>
+</ul>
+<h2 id="insecure-direct-object-references-idor"><a class="header" href="#insecure-direct-object-references-idor">Insecure Direct Object References (IDOR)</a></h2>
+<p>IDOR is a common security vulnerability that occurs when an application exposes direct access to objects such as files or database records without proper authorization checks. Attackers can exploit this vulnerability by manipulating the references to access unauthorized data.
+Basics of what IDOR is, how it works, its risks, and methods for detection and prevention.</p>
+<h3 id="sample-response"><a class="header" href="#sample-response">Sample Response</a></h3>
+<p><strong>What is IDOR?</strong></p>
+<p>Insecure Direct Object Reference (IDOR) is a type of security vulnerability found in web applications that occurs when an application exposes a reference to an internal object, such as a database record or a file, without proper authorization checks. This allows an attacker to manipulate the reference to access or perform actions on objects they are not authorized to interact with.</p>
+<p><strong>How IDOR Works:</strong></p>
+<p>IDOR typically involves a situation where an application uses user-supplied input to directly reference internal objects. For example, consider a URL that allows users to access their profile:</p>
+<pre><code>http://example.com/user/profile?id=123
+</code></pre>
+<p>In this example, <code>id=123</code> might refer to a unique user record in the database. If the application does not verify whether the authenticated user has permission to access that specific user profile, an attacker could change the ID in the URL to access another user’s profile:</p>
+<pre><code>http://example.com/user/profile?id=124
+</code></pre>
+<p>If the application lacks proper authorization controls, the attacker could view, modify, or delete data belonging to another user. This can lead to unauthorized data access, data exfiltration, or other harmful consequences.</p>
+<p><strong>Risks Associated with IDOR:</strong></p>
+<ul>
+<li><strong>Data Exposure:</strong> Sensitive data from other users can be accessed without authorization.</li>
+<li><strong>Data Manipulation:</strong> Attackers may modify or delete records they shouldn’t be able to.</li>
+<li><strong>Reputation Damage:</strong> Organizations may suffer reputational harm if users’ data is compromised.</li>
+<li><strong>Regulatory Compliance Issues:</strong> Applications that fail to protect user data may face legal and regulatory repercussions.</li>
+</ul>
+<p><strong>Detection and Prevention:</strong></p>
+<p>To detect IDOR vulnerabilities, one can perform manual testing by manipulating parameters in HTTP requests and observing the application’s response. Automated tools like Burp Suite or OWASP ZAP can also help in scanning for such vulnerabilities.</p>
+<p><strong>Preventive Measures:</strong></p>
+<ul>
+<li><strong>Access Control Checks:</strong> Always validate that the user has permission to access the requested objects, regardless of the input provided.</li>
+<li><strong>Indirection:</strong> Use indirect references or tokens instead of exposing direct object references. For instance, instead of using <code>user_id</code>, you could use a token that maps to the user in the backend.</li>
+<li><strong>Logging and Monitoring:</strong> Implement logging for access requests to detect any unauthorized access attempts.</li>
+</ul>
+<h3 id="how-to-detect-idor-vulnerabilities"><a class="header" href="#how-to-detect-idor-vulnerabilities">How to Detect IDOR Vulnerabilities</a></h3>
+<p>Here are some steps and methods to detect IDOR vulnerabilities systematically:</p>
+<h4 id="1-understanding-idor"><a class="header" href="#1-understanding-idor">1. <strong>Understanding IDOR</strong></a></h4>
+<ul>
+<li>Get familiar with how the application exposes resources. This often happens in URLs or API parameters where object IDs are passed, such as:
+<ul>
+<li><code>/user/profile?id=123</code></li>
+<li><code>/invoice/details?invoice_id=456</code></li>
+</ul>
+</li>
+<li>The vulnerability arises when an attacker can change the ID (e.g., from <code>123</code> to <code>124</code>) to access data belonging to another user.</li>
+</ul>
+<h4 id="2-manual-testing"><a class="header" href="#2-manual-testing">2. <strong>Manual Testing</strong></a></h4>
+<ul>
+<li><strong>Identify Parameters</strong>: Make note of any parameters in the application that reference internal objects.</li>
+<li><strong>Manipulate Requests</strong>:
+<ul>
+<li>Use a browser’s developer tools to inspect and intercept requests.</li>
+<li>Modify object IDs to attempt to access other users’ data.</li>
+</ul>
+</li>
+<li><strong>Check for Response</strong>: If you receive a response containing information that does not belong to your user, it’s likely an IDOR vulnerability.</li>
+</ul>
+<h4 id="3-automated-scanning-tools"><a class="header" href="#3-automated-scanning-tools">3. <strong>Automated Scanning Tools</strong></a></h4>
+<ul>
+<li>Use security testing tools that can detect IDOR vulnerabilities. Some popular tools include:
+<ul>
+<li><strong>Burp Suite</strong>: Can be configured to automatically scan for IDOR by testing parameter values.</li>
+<li><strong>OWASP ZAP (Zed Attack Proxy)</strong>: Can also be used for testing web applications and includes features for detecting IDOR.</li>
+<li><strong>Acunetix, Nessus</strong>: Other scanners that can include IDOR checking as part of their scanning capabilities.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-burp-suite-example"><a class="header" href="#4-burp-suite-example">4. <strong>Burp Suite Example</strong></a></h4>
+<ul>
+<li><strong>Intercept HTTP Requests</strong>: Configure Burp to intercept requests sent from your browser.</li>
+<li><strong>Send to Repeater</strong>: Send requests to the Repeater tool where you can modify parameters easily.</li>
+<li><strong>Modify Parameter</strong>: Change the parameter value (e.g., the user ID or invoice ID) to see if you can access unauthorized data.</li>
+<li><strong>Analyze Responses</strong>: Check the responses to see if sensitive information from other users is returned.</li>
+</ul>
+<h4 id="5-code-review-for-developers"><a class="header" href="#5-code-review-for-developers">5. <strong>Code Review (For Developers)</strong></a></h4>
+<ul>
+<li>Perform security code reviews, focusing on how the application handles user input for object references.</li>
+<li>Ensure proper access controls are implemented for object access, verifying users’ permissions before serving data.</li>
+</ul>
+<h3 id="example-of-testing-for-idor"><a class="header" href="#example-of-testing-for-idor">Example of Testing for IDOR</a></h3>
+<p>IDOR vulnerabilities can pose severe risks, especially in applications handling sensitive information. Regular testing and securing object references with proper authorization checks and roles can significantly reduce the risk of IDOR vulnerabilities. Security training for developers on secure coding practices is also essential to prevent such vulnerabilities from being introduced during development.
+Suppose you have a URL like this:</p>
+<pre><code class="language-plaintext">http://example.com/user/profile?id=10
+</code></pre>
+<ol>
+<li><strong>Initial Request</strong>: You send the above request and receive the profile details for user ID <code>10</code>.</li>
+<li><strong>Manipulate the ID</strong>: Change the <code>id</code> parameter to <code>11</code>, <code>12</code>, etc.:
+<ul>
+<li><code>http://example.com/user/profile?id=11</code></li>
+<li><code>http://example.com/user/profile?id=12</code></li>
+</ul>
+</li>
+<li><strong>Analyze Responses</strong>: If you receive the details of other user profiles (<code>id=11</code> or <code>id=12</code>), you have found an IDOR vulnerability.</li>
+</ol>
+<p>Yes, Metasploit can be used for testing web applications, particularly in the context of penetration testing and identifying vulnerabilities. While Metasploit is primarily known for its exploit database and capabilities against operating systems and network services, it also has various auxiliary and exploit modules specifically designed for web applications.</p>
+<h3 id="idor-with-metexploit"><a class="header" href="#idor-with-metexploit">IDOR with Metexploit</a></h3>
+<h3 id="metexploit"><a class="header" href="#metexploit">Metexploit</a></h3>
+<p>Metasploit doesn’t have a built-in module for testing IDOR vulnerabilities specifically. However, you can use Metasploit in combination with other tools or techniques to identify and exploit IDOR vulnerabilities. Here’s a general approach:</p>
+<h3 id="using-metasploit-for-web-application-testing"><a class="header" href="#using-metasploit-for-web-application-testing">Using Metasploit for Web Application Testing</a></h3>
+<p>Here are some ways you can use Metasploit for web application testing:</p>
+<h4 id="1-web-scanning-modules"><a class="header" href="#1-web-scanning-modules">1. <strong>Web Scanning Modules</strong></a></h4>
+<p>Metasploit includes multiple auxiliary modules that can perform various types of scans against web applications. Examples include:</p>
+<ul>
+<li>
+<p><strong>SQL Injection Detection</strong>:</p>
+<pre><code class="language-bash">use auxiliary/scanner/http/sql_injection
+set RHOSTS &lt;target&gt;
+set TARGETURI /login.php?username=admin&amp;password=admin
+run
+</code></pre>
+</li>
+<li>
+<p><strong>Directory and File Enumeration</strong>:</p>
+<pre><code class="language-bash">use auxiliary/scanner/http/dir_scanner
+set RHOSTS &lt;target&gt;
+set RPATH /path/to/directory
+run
+</code></pre>
+</li>
+<li>
+<p><strong>XSS Testing</strong>:
+Metasploit has modules that can help identify potential Cross-Site Scripting (XSS) vulnerabilities.</p>
+</li>
+</ul>
+<h4 id="2-exploit-modules-for-web-frameworks"><a class="header" href="#2-exploit-modules-for-web-frameworks">2. <strong>Exploit Modules for Web Frameworks</strong></a></h4>
+<p>Some modules are designed specifically to exploit vulnerabilities in web applications and frameworks, such as:</p>
+<ul>
+<li><strong>WordPress Exploits</strong>: Exploits for known vulnerabilities in WordPress plugins or themes.</li>
+<li><strong>CMS Exploits</strong>: Modules for exploiting vulnerabilities in various Content Management Systems (CMS).</li>
+</ul>
+<h4 id="3-metasploits-web-application-testing-utilities"><a class="header" href="#3-metasploits-web-application-testing-utilities">3. <strong>Metasploit’s Web Application Testing Utilities</strong></a></h4>
+<p>In addition to exploiting vulnerabilities, Metasploit provides several utilities for web application testing, including:</p>
+<ul>
+<li>
+<p><strong>Metasploit Pro</strong>: If you’re using the Pro version of Metasploit, it includes additional web application security testing features and capabilities to integrate with tools like Burp Suite.</p>
+</li>
+<li>
+<p><strong>Web Application Attack Framework</strong>: Metasploit includes a set of tools (Metasploit Community edition) for web application attack simulations.</p>
+</li>
+</ul>
+<h4 id="4-integration-with-other-tools"><a class="header" href="#4-integration-with-other-tools">4. <strong>Integration with Other Tools</strong></a></h4>
+<p>You can also combine Metasploit with other tools for a more robust web application testing experience:</p>
+<ul>
+<li><strong>Burp Suite</strong>: You can use Burp to intercept requests and then send them to Metasploit for exploitation.</li>
+<li><strong>OWASP ZAP</strong>: Similar to Burp, ZAP can be used for initial scanning and interception of requests that can then be exploited using Metasploit.</li>
+</ul>
+<h3 id="example-of-testing-a-web-application"><a class="header" href="#example-of-testing-a-web-application">Example of Testing a Web Application</a></h3>
+<ol>
+<li>
+<p><strong>Initialize Metasploit</strong>:</p>
+<pre><code class="language-bash">msfconsole
+</code></pre>
+</li>
+<li>
+<p><strong>Search for Web Modules</strong>:</p>
+<pre><code class="language-bash">search type:auxiliary http
+</code></pre>
+</li>
+<li>
+<p><strong>Select a Module</strong>:</p>
+<pre><code class="language-bash">use auxiliary/scanner/http/sql_injection
+</code></pre>
+</li>
+<li>
+<p><strong>Set Target and Run</strong>:</p>
+<pre><code class="language-bash">set RHOSTS &lt;target&gt;
+set TARGETURI /example.php?id=1
+run
+</code></pre>
+</li>
+<li>
+<p><strong>Check Results</strong>: Analyze the output to determine if the web application is vulnerable and plan further actions accordingly.</p>
+</li>
+</ol>
+<h2 id="broken-access-control-bac"><a class="header" href="#broken-access-control-bac">Broken Access Control (BAC)</a></h2>
+<p>Broken Access Control (BAC) refers to a security vulnerability where an application fails to properly enforce restrictions on what authenticated users can do. This allows attackers to access unauthorized functionality or data.</p>
+<h3 id="understanding-bac"><a class="header" href="#understanding-bac">Understanding BAC</a></h3>
+<p>BAC occurs when access control checks are missing or improperly implemented. Common examples include:</p>
+<ul>
+<li>Bypassing access control checks by modifying the URL or HTML page</li>
+<li>Allowing privilege escalation by changing user role parameters</li>
+<li>Accessing API endpoints without proper authorization</li>
+<li>Metadata manipulation like tampering with JWT tokens</li>
+</ul>
+<h3 id="key-risks"><a class="header" href="#key-risks">Key Risks</a></h3>
+<ul>
+<li><strong>Unauthorized Access:</strong> Users can access restricted functionality or data</li>
+<li><strong>Privilege Escalation:</strong> Users can elevate their privileges to admin/higher roles</li>
+<li><strong>Information Disclosure:</strong> Sensitive data exposed to unauthorized users</li>
+<li><strong>Data Manipulation:</strong> Unauthorized modification of data</li>
+</ul>
+<h3 id="detection-methods"><a class="header" href="#detection-methods">Detection Methods</a></h3>
+<ol>
+<li>
+<p><strong>Manual Testing:</strong></p>
+<ul>
+<li>Attempt to access restricted URLs/endpoints</li>
+<li>Modify user roles and permissions in requests</li>
+<li>Test vertical and horizontal privilege escalation</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Scanning:</strong></p>
+<ul>
+<li>Use web vulnerability scanners</li>
+<li>Implement automated security testing</li>
+<li>Deploy continuous security monitoring</li>
+</ul>
+</li>
+</ol>
+<h3 id="prevention-strategies-3"><a class="header" href="#prevention-strategies-3">Prevention Strategies</a></h3>
+<ul>
+<li>
+<p><strong>Implement Strong Access Controls:</strong></p>
+<ul>
+<li>Use role-based access control (RBAC)</li>
+<li>Enforce principle of least privilege</li>
+<li>Validate permissions on server-side</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Best Practices:</strong></p>
+<ul>
+<li>Deny access by default</li>
+<li>Log access control failures</li>
+<li>Use secure session management</li>
+<li>Implement rate limiting</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-testing-scenario"><a class="header" href="#example-testing-scenario">Example Testing Scenario</a></h3>
+<pre><code class="language-http"># Original admin request
+GET /admin/users HTTP/1.1
+Authorization: Bearer &lt;admin_token&gt;
+
+# Attempting unauthorized access
+GET /admin/users HTTP/1.1
+Authorization: Bearer &lt;regular_user_token&gt;
+</code></pre>
+<p>Regular security testing and proper implementation of access controls are essential to prevent BAC vulnerabilities and protect sensitive resources.
+By implementing robust authorization checks and regularly testing for vulnerabilities, applications can mitigate the risks associated with BOLA and protect sensitive user data.</p>
+<h2 id="broken-object-level-authorization-bola"><a class="header" href="#broken-object-level-authorization-bola">Broken Object Level Authorization (BOLA)</a></h2>
+<p>BOLA is a critical security vulnerability that arises when an application does not properly enforce authorization checks for object-level access. This flaw allows attackers to manipulate requests to access or modify objects they are not authorized to interact with.</p>
+<h3 id="understanding-bola"><a class="header" href="#understanding-bola">Understanding BOLA</a></h3>
+<p>BOLA occurs when an application fails to verify whether the user has the necessary permissions to perform actions on a specific object. For example, consider an API endpoint that retrieves user details:</p>
+<pre><code>GET /api/user/details?user_id=123
+</code></pre>
+<p>If the application does not enforce proper authorization checks, an attacker could change the <code>user_id</code> parameter to access another user’s details:</p>
+<pre><code>GET /api/user/details?user_id=124
+</code></pre>
+<h3 id="risks-associated-with-bola"><a class="header" href="#risks-associated-with-bola">Risks Associated with BOLA</a></h3>
+<ul>
+<li><strong>Unauthorized Access:</strong> Attackers can access sensitive information of other users.</li>
+<li><strong>Data Manipulation:</strong> Unauthorized modification or deletion of data.</li>
+<li><strong>Compliance Violations:</strong> Breaches of data protection regulations.</li>
+<li><strong>Reputation Damage:</strong> Loss of trust from users due to data breaches.</li>
+</ul>
+<h3 id="detecting-and-preventing-bola"><a class="header" href="#detecting-and-preventing-bola">Detecting and Preventing BOLA</a></h3>
+<h4 id="detection"><a class="header" href="#detection">Detection</a></h4>
+<ol>
+<li>
+<p><strong>Manual Testing:</strong></p>
+<ul>
+<li>Identify endpoints that expose object references.</li>
+<li>Manipulate object identifiers in requests to test access control.</li>
+<li>Verify if unauthorized data is accessible.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Tools:</strong></p>
+<ul>
+<li>Use tools like Burp Suite or OWASP ZAP to scan for BOLA vulnerabilities.</li>
+<li>Configure tools to test object-level authorization by altering request parameters.</li>
+</ul>
+</li>
+</ol>
+<h4 id="prevention"><a class="header" href="#prevention">Prevention</a></h4>
+<ul>
+<li><strong>Implement Access Controls:</strong> Ensure that every request is checked against the user’s permissions for the specific object.</li>
+<li><strong>Use Indirect References:</strong> Employ indirect references or tokens instead of direct object identifiers.</li>
+<li><strong>Regular Audits:</strong> Conduct regular security audits and code reviews to identify and fix authorization issues.</li>
+<li><strong>Security Training:</strong> Educate developers on secure coding practices to prevent BOLA vulnerabilities.</li>
+</ul>
+<h3 id="example-of-testing-for-bola"><a class="header" href="#example-of-testing-for-bola">Example of Testing for BOLA</a></h3>
+<p>Consider an API endpoint:</p>
+<pre><code class="language-plaintext">GET /api/order/details?order_id=1001
+</code></pre>
+<ol>
+<li><strong>Initial Request:</strong> Access the endpoint with a valid <code>order_id</code> to retrieve order details.</li>
+<li><strong>Manipulate the ID:</strong> Change the <code>order_id</code> to test unauthorized access:
+<ul>
+<li><code>GET /api/order/details?order_id=1002</code></li>
+</ul>
+</li>
+<li><strong>Analyze Responses:</strong> If details of another order are returned, a BOLA vulnerability is present.</li>
+</ol>
+<p>By implementing robust authorization checks and regularly testing for vulnerabilities, applications can mitigate the risks associated with BOLA and protect sensitive user data.</p>
+<h2 id="missing-function-level-access-control-mflac"><a class="header" href="#missing-function-level-access-control-mflac">Missing Function Level Access Control (MFLAC)</a></h2>
+<p>Missing Function Level Access Control (MFLAC) is a security vulnerability that occurs when an application does not properly enforce access controls at the function level. This allows unauthorized users to invoke functions or execute operations that they should not have access to.</p>
+<h3 id="understanding-mflac"><a class="header" href="#understanding-mflac">Understanding MFLAC</a></h3>
+<p>MFLAC arises when the application fails to verify whether the user has the necessary permissions to execute a specific function. For example, consider an API endpoint that allows users to delete accounts:</p>
+<pre><code>DELETE /api/user/delete
+</code></pre>
+<p>If the application does not enforce proper authorization checks before executing the delete operation, an attacker could invoke this function to delete accounts they are not authorized to delete.</p>
+<h3 id="risks-associated-with-mflac"><a class="header" href="#risks-associated-with-mflac">Risks Associated with MFLAC</a></h3>
+<ul>
+<li><strong>Unauthorized Operations:</strong> Attackers can perform actions they are not permitted to, such as deleting or modifying data.</li>
+<li><strong>Data Integrity Issues:</strong> Critical data can be altered or destroyed without proper authorization.</li>
+<li><strong>Compliance Violations:</strong> Breaches of data protection regulations.</li>
+<li><strong>Reputation Damage:</strong> Loss of trust from users due to security incidents.</li>
+</ul>
+<h3 id="detecting-and-preventing-mflac"><a class="header" href="#detecting-and-preventing-mflac">Detecting and Preventing MFLAC</a></h3>
+<h4 id="detection-1"><a class="header" href="#detection-1">Detection</a></h4>
+<ol>
+<li>
+<p><strong>Manual Testing:</strong></p>
+<ul>
+<li>Identify endpoints that perform sensitive operations.</li>
+<li>Attempt to invoke these functions without proper authorization.</li>
+<li>Verify if unauthorized operations are possible.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Tools:</strong></p>
+<ul>
+<li>Use tools like Burp Suite or OWASP ZAP to scan for MFLAC vulnerabilities.</li>
+<li>Configure tools to test function-level authorization by attempting unauthorized operations.</li>
+</ul>
+</li>
+</ol>
+<h4 id="prevention-1"><a class="header" href="#prevention-1">Prevention</a></h4>
+<ul>
+<li><strong>Implement Access Controls:</strong> Ensure that every function call is checked against the user’s permissions.</li>
+<li><strong>Use Role-Based Access Control (RBAC):</strong> Define roles and permissions clearly and enforce them at the function level.</li>
+<li><strong>Principle of Least Privilege:</strong> Grant users only the minimum level of access necessary to perform their tasks.</li>
+<li><strong>Regular Audits:</strong> Conduct regular security audits and code reviews to identify and fix authorization issues.</li>
+<li><strong>Security Training:</strong> Educate developers on secure coding practices to prevent MFLAC vulnerabilities.</li>
+</ul>
+<h3 id="example-of-testing-for-mflac"><a class="header" href="#example-of-testing-for-mflac">Example of Testing for MFLAC</a></h3>
+<p>Consider an API endpoint:</p>
+<pre><code class="language-plaintext">DELETE /api/user/delete
+</code></pre>
+<ol>
+<li><strong>Initial Request:</strong> Attempt to delete a user account without proper authorization.</li>
+<li><strong>Analyze Response:</strong> If the account is deleted successfully, a MFLAC vulnerability is present.</li>
+</ol>
+<p>By implementing robust authorization checks and regularly testing for vulnerabilities, applications can mitigate the risks associated with MFLAC and protect sensitive user data.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../webapp/cors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../webapp/ssr.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../webapp/cors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../webapp/ssr.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

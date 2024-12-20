@@ -1,0 +1,824 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Network - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="../INTRO.html"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="../threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="../webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="../webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item "><a href="../webapp/api.html"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item "><a href="../webapp/ssr.html"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="../audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="../identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="../identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="../network/network.html" class="active"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item "><a href="../network/firewall.html"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="../network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="../network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="../network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="../network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="../network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="../network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="../network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="../network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="../cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="../data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="../data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="../data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="../searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="../database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="../malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="../penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="../linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="../linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="../linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="../protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="../protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="../protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="../protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="../protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="../standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="../other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="../other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="../other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="../other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../attack/attack.html"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="../risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="../Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="../Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//network/network.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="models"><a class="header" href="#models">Models</a></h1>
+<h2 id="osi"><a class="header" href="#osi">OSI</a></h2>
+<p>Open Systems Interconnection model is a conceptual framework used to understand and implement network communications. It consists of seven layers, each with distinct functions:</p>
+<ol>
+<li>
+<p><strong>Physical Layer</strong>: This layer is responsible for the physical <strong>connection between devices</strong>, including the transmission and reception of raw binary data over a physical medium (e.g., cables, switches). It includes hardware elements like cables, switches, and the electrical signals that pass through them.</p>
+</li>
+<li>
+<p><strong>Data Link Layer</strong>[S1]: The data link layer ensures reliable communication between directly <strong>connected nodes.</strong> It manages <strong>error detection and correction, framing, and flow control</strong>. Common protocols at this layer include <strong>Ethernet and Wi-Fi</strong>.</p>
+</li>
+<li>
+<p><strong>Network Layer</strong>: This layer manages <strong>routing and forwarding of data packets</strong> across the network. It determines the best paths for data transmission and handles logical addressing (e.g., IP addresses). <strong>Key protocols include IP (Internet Protocol).</strong></p>
+</li>
+<li>
+<p><strong>Transport Layer</strong>: The transport layer provides reliable data transfer services to the upper layers, ensuring error recovery and flow control. It breaks down messages into packets and is responsible for end-to-end communication. Common protocols include <strong>TCP (Transmission Control Protocol) and UDP (User Datagram Protocol).</strong></p>
+</li>
+<li>
+<p><strong>Session Layer</strong>: This layer manages sessions, which are established and maintained for communication between applications. It handles the opening, closing, and management of sessions, <strong>allowing for proper data synchronization.</strong></p>
+</li>
+<li>
+<p><strong>Presentation Layer</strong>: The presentation layer is responsible for <strong>data translation, encryption, and compression</strong>. It ensures that data is in a usable format for the application layer. This layer translates data formats and provides <strong>data serialization/deserialization.</strong></p>
+</li>
+<li>
+<p><strong>Application Layer</strong>: The topmost layer provides services directly to end-user applications. It <strong>encompasses protocols</strong> for various application services, such as HTTP (for web browsing), FTP (for file transfer), and SMTP (for email).</p>
+</li>
+</ol>
+<p>Understanding the OSI model can help in troubleshooting network issues and improving communication protocols.</p>
+<hr />
+<p>Certainly! Below are the two sections combined, providing both the OSI model overview and the ASCII art representations of Protocol Data Units (PDUs) at various layers of the OSI model.</p>
+<hr />
+<h3 id="osi-model-overview-with-pdus-and-protocols"><a class="header" href="#osi-model-overview-with-pdus-and-protocols">OSI Model Overview with PDUs and Protocols</a></h3>
+<pre><code class="language-plaintext">+---------------------------------------------------+
+|                      OSI Model                    |
++---------------------------------------------------+
+| Layer 7: Application                               |
+| +-----------------------------------------------+ |
+| | PDU: Data                                     | |
+| | Protocols:                                    | |
+| |   - HTTP (Web)                               | |
+| |   - FTP (File Transfer)                      | |
+| |   - Telnet (Terminal Access)                 | |
+| |   - DNS (Domain Name Service)                | |
+| |   - SMTP (Email Transfer)                    | |
+| |   - SNMP (Network Management)                | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 6: Presentation                            | |
+| +-----------------------------------------------+ |
+| | PDU: Data                                     | |
+| | Functions:                                    | |
+| |   - Data Encoding                             | |
+| |   - Data Compression                          | |
+| |   - Encryption                                | |
+| |   - Character Set Translation                 | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 5: Session                                 | |
+| +-----------------------------------------------+ |
+| | PDU: Data                                     | |
+| | Functions:                                    | |
+| |   - Session Control                           | |
+| |   - Establishing Connections                  | |
+| |   - Session Termination                       | |
+| |   - Synchronization                           | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 4: Transport                               | |
+| +-----------------------------------------------+ |
+| | PDU: Segment for TCP / Datagram for UDP       | |
+| | Protocols:                                    | |
+| |   - TCP (Transmission Control Protocol)      | |
+| |   - UDP (User Datagram Protocol)             | |
+| | Functions:                                    | |
+| |   - Reliable / Unreliable Delivery           | |
+| |   - Flow Control                              | |
+| |   - Segmentation and Reassembly               | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 3: Network                                 | |
+| +-----------------------------------------------+ |
+| | PDU: Packet                                   | |
+| | Protocols:                                    | |
+| |   - IP (Internet Protocol)                   | |
+| |   - ICMP (Internet Control Message Protocol) | |
+| |   - IGMP (Internet Group Management Protocol) | |
+| |   - ARP: (Address Resolution Protocol) | |
+| | Functions:                                    | |
+| |   - Routing                                   | |
+| |   - Logical Addressing                        | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 2: Data Link                              | |
+| +-----------------------------------------------+ |
+| | PDU: Frame                                    | |
+| | Protocols:                                    | |
+| |   - Ethernet                                  | |
+| |   - PPP (Point-to-Point Protocol)           | |
+| |   - HDLC (High-Level Data Link Control)      | |
+| | Functions:                                    | |
+| |   - MAC Addressing                            | |
+| |   - Error Detection                           | |
+| |   - Frame Synchronization                     | |
+| +-----------------------------------------------+ |
+|                                                   |
+| Layer 1: Physical                               | |
+| +-----------------------------------------------+ |
+| | PDU: Bit                                      | |
+| | Represents:                                   | |
+| |   - Physical Medium (Cabling, Hubs)          | |
+| |   - Electrical/Optical Signals                | |
+| |   - Connector Types (RJ45, Fiber, etc.)      | |
+| |   - Signal Types (Analog, Digital)           | |
+| +-----------------------------------------------+ |
++---------------------------------------------------+
+</code></pre>
+<h3 id="explanation-of-each-layer-and-its-pdu"><a class="header" href="#explanation-of-each-layer-and-its-pdu">Explanation of Each Layer and Its PDU</a></h3>
+<ol>
+<li>
+<p><strong>Layer 7: Application</strong></p>
+<ul>
+<li><strong>PDU</strong>: Data</li>
+<li><strong>Protocols</strong>:
+<ul>
+<li><strong>HTTP</strong>: Hypertext Transfer Protocol for web content.</li>
+<li><strong>FTP</strong>: File Transfer Protocol for sending/receiving files.</li>
+<li><strong>Telnet</strong>: Terminal emulation for remote access.</li>
+<li><strong>DNS</strong>: Domain Name System for name resolution.</li>
+<li><strong>SMTP</strong>: Simple Mail Transfer Protocol for email transmission.</li>
+<li><strong>SNMP</strong>: Simple Network Management Protocol for managing network devices.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 6: Presentation</strong></p>
+<ul>
+<li><strong>PDU</strong>: Data</li>
+<li><strong>Functions</strong>:
+<ul>
+<li><strong>Data Encoding</strong>: Conversion of data to a format usable by the application layer.</li>
+<li><strong>Data Compression</strong>: Reducing data size for transmission efficiency.</li>
+<li><strong>Encryption</strong>: Securing data for confidentiality.</li>
+<li><strong>Character Set Translation</strong>: Translating character sets for application compatibility.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 5: Session</strong></p>
+<ul>
+<li><strong>PDU</strong>: Data</li>
+<li><strong>Functions</strong>:
+<ul>
+<li><strong>Session Control</strong>: Establishes, manages, and terminates sessions.</li>
+<li><strong>Synchronization</strong>: Keeps applications in sync during communication.</li>
+<li><strong>Session Termination</strong>: Ensures proper closure of communication sessions.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 4: Transport</strong></p>
+<ul>
+<li><strong>PDU</strong>: Segment (for TCP) / Datagram (for UDP)</li>
+<li><strong>Protocols</strong>:
+<ul>
+<li><strong>TCP</strong>: Ensures reliable, ordered delivery of data.</li>
+<li><strong>UDP</strong>: Allows for faster, connectionless communication.</li>
+</ul>
+</li>
+<li><strong>Functions</strong>:
+<ul>
+<li><strong>Reliable/Unreliable Delivery</strong>: Guarantees delivery with TCP; up to application with UDP.</li>
+<li><strong>Flow Control</strong>: Mechanisms for controlling data transmission rates.</li>
+<li><strong>Segmentation and Reassembly</strong>: Splits data into smaller segments and reassembles at the destination.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 3: Network</strong></p>
+<ul>
+<li><strong>PDU</strong>: Packet</li>
+<li><strong>Protocols</strong>:
+<ul>
+<li><strong>IP</strong>: Handles addressing and routing packets across networks.</li>
+<li><strong>ICMP</strong>: Sends error messages and operational information.</li>
+<li><strong>IGMP</strong>: Manages multicast group memberships.</li>
+<li><strong>ARP</strong>: Resolves IP addresses to MAC addr within a local net</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 2: Data Link</strong></p>
+<ul>
+<li><strong>PDU</strong>: Frame</li>
+<li><strong>Protocols</strong>:
+<ul>
+<li><strong>Ethernet</strong>: The most common LAN technology.</li>
+<li><strong>PPP</strong>: Protocol used for direct connections between two nodes.</li>
+<li><strong>HDLC</strong>: Standard for transmitting data over point-to-point links.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Layer 1: Physical</strong></p>
+<ul>
+<li><strong>PDU</strong>: Bit</li>
+<li><strong>Represents</strong>:
+<ul>
+<li><strong>Physical Medium</strong>: Cables, switches, and other hardware.</li>
+<li><strong>Electrical/Optical Signals</strong>: Transmits bits as electrical pulses or light.</li>
+<li><strong>Connector Types</strong>: RJ45, fiber optic connectors, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h3>
+<p>This upgraded ASCII art representation provides a comprehensive view of the OSI model, clearly illustrating the layers, PDUs, protocols, and functions. Each layer builds on the last, ensuring data is correctly prepared, delivered, and interpreted across various network environments. This visual summary aids in understanding the structure and depth of communication in networked systems.</p>
+<hr />
+<h3 id="ascii-art-representations-of-pdus"><a class="header" href="#ascii-art-representations-of-pdus">ASCII Art Representations of PDUs</a></h3>
+<p>You’re absolutely right to point out that the order of protocols within the stack was not traditional in my previous representation. Network protocols follow a specific hierarchy, and they are typically organized based on their functionality and how they interoperate. Here’s a corrected version of the ASCII art that represents the correct order of protocols in the networking stack:</p>
+<h3 id="corrected-networking-protocol-stack"><a class="header" href="#corrected-networking-protocol-stack">Corrected Networking Protocol Stack</a></h3>
+<pre><code class="language-plaintext">+--------------------------------------------------------+
+|                     Application Layer                  |
+| +----------------------------------------------------+ |
+| |                     DNS Protocol                    | |
+| | +---------------------------------------------+    | |
+| | |                  DNS Header                 |    | |
+| | | +-----------------------------------------+ |    | |
+| | | | Transaction ID (16 bits)                | |    | |
+| | | +-----------------------------------------+ |    | |
+| | | | Flags (16 bits)                         | |    | |
+| | | |   QR (1 bit)  | Opcode (4 bits)       | |    | |
+| | | |   AA (1 bit)  | TC (1 bit)  | RD (1 bit) | |    | |
+| | | |   RA (1 bit)  | Z (3 bits)  | RCODE (4 bits)| |  |
+| | | +-----------------------------------------+ |    | |
+| | | | Questions (16 bits)                   | |    | |
+| | | +---------------------------------------+  |    | |
+| | | | Answer RRs (16 bits)                  | |    | |
+| | | +---------------------------------------+  |    | |
+| | | | Authority RRs (16 bits)               | |    | |
+| | | +---------------------------------------+  |    | |
+| | | | Additional RRs (16 bits)              | |    | |
+| | | +---------------------------------------+  |    | |
+| | | |              Questions Section         | |    | |
+| | | |              (Variable Length)         | |    | |
+| | | +---------------------------------------+  |    | |
+| | | |              Answers Section           | |    | |
+| | | |              (Variable Length)         | |    | |
+| | | +---------------------------------------+  |    | |
+| | +---------------------------------------------+    | |
+| +----------------------------------------------------+ |
++--------------------------------------------------------+
+
++--------------------------------------------------------+
+|                     Transport Layer                    |
+| +----------------------------------------------------+ |
+| |                     TCP Segment                     | |
+| | +------------------------------------------------+ | |
+| | |                TCP Header                       | | |
+| | | +--------------------------------+ +------------+ | |
+| | | |     Source Port               | |  Dest Port | | |
+| | | |            16 bits            | |    16 bits | | |
+| | | +--------------------------------+ +------------+ | |
+| | | | Sequence Number (32 bits)                 | | |
+| | | +--------------------------------------------+ | |
+| | | | Acknowledgment Number (32 bits)           | | |
+| | | +--------------------------------------------+ | |
+| | | | Data Offset | Flags | Window Size          | | |
+| | | |   4 bits   | 9 bits|  16 bits             | | |
+| | | +--------------------------------------------+ | |
+| | | | Checksum (16 bits)                         | | |
+| | | | Urgent Pointer (16 bits)                   | | |
+| | | +--------------------------------------------+ | |
+| | | |                Options (Variable)           | | |
+| | | +--------------------------------------------+ | |
+| | | |            Payload/Data                      | | |
+| | | |                    (N bytes)                | | |
+| | | +--------------------------------------------+ | |
+| | +------------------------------------------------+ | |
+| |                             + Checksum                |
+| |                             + Flags                   |
+| |                             + Sequence Number         |
+| |                             + Acknowledgment Number   |
+| |                             + Protocol (TCP)         |
+| +----------------------------------------------------+ |
++--------------------------------------------------------+
+
++--------------------------------------------------------+
+|                      Internet Layer                    |
+| +----------------------------------------------------+ |
+| |                     IP Packet                      | |
+| | +------------------------------------------------+ | |
+| | |                IP Header                        | | |
+| | | +--------------------------------+ +-------------+ | |
+| | | | Version | IHL | Type of Service | Total Length | | |
+| | | |    4    |  4  |       8 bits      |   16 bits   | | |
+| | | +--------------------------------+ +-------------+ | |
+| | | | Identification (16 bits)                    | | |
+| | | +---------------------------------------------+ | |
+| | | | Flags  | Fragment Offset (13 bits)          | | |
+| | | +---------------------------------------------+ | |
+| | | | Time to Live | Protocol (8 bits)             | | |
+| | | |   [1: ICMP]  [2: IGMP]  [6: TCP]            | | |
+| | | +---------------------------------------------+ | |
+| | | | Header Checksum (16 bits)                   | | |
+| | | | Source IP Address (32 bits)                  | | |
+| | | | Destination IP Address (32 bits)             | | |
+| | | +---------------------------------------------+ | |
+| | | |                   Options (Variable)         | | |
+| | | +---------------------------------------------+ | |
+| | | |                   Payload/Data                 | | |
+| | | |                     (M bytes)                 | | |
+| | | +---------------------------------------------+ | |
+| | +------------------------------------------------+ | |
+| |                             + Checksum                |
+| |                             + Flags                   |
+| |                             + Total Length            |
+| |                             + Source/Destination IP   |
+| +----------------------------------------------------+ |
++--------------------------------------------------------+
+
++--------------------------------------------------------+
+|                     ICMP Packet                        |
+| +----------------------------------------------------+ |
+| |                     ICMP Header                    | |
+| | +--------------------------------------------+    | |
+| | | Type (8 bits)                           |      | |
+| | | Code (8 bits)                           |      | |
+| | | Checksum (16 bits)                     |      | |
+| | | Identifier (16 bits)                  |      | |
+| | | Sequence Number (16 bits)              |      | |
+| | +--------------------------------------------+    | |
+| | | Payload/Data (Variable Length)           |      | |
+| | +--------------------------------------------+    | |
+| +----------------------------------------------------+ |
+|                             + Checksum                |
+|                             + Type                   |
+|                             + Code                   |
++--------------------------------------------------------+
+
++--------------------------------------------------------+
+|                     IGMP Packet                        |
+| +----------------------------------------------------+ |
+| |                     IGMP Header                    | |
+| | +--------------------------------------------+    | |
+| | | Type (8 bits)                           |      | |
+| | | Max Response Time (8 bits)             |      | |
+| | | Checksum (16 bits)                     |      | |
+| | | Group Address (32 bits)                |      | |
+| | +--------------------------------------------+    | |
+| | | Payload/Data (Variable Length)           |      | |
+| | +--------------------------------------------+    | |
+| +----------------------------------------------------+ |
+|                             + Checksum                |
+|                             + Type                   |
+|                             + Group Address          |
++--------------------------------------------------------+
++-------------------------------------------------------------+
+|                    ARP Datagram                             |
+| +---------------------------------------------------------+ |
+| | Hardware Type (16 bits)                                 | |
+| |      - 1: Ethernet                                      | |
+| |      - 6: IEEE 802.3                                    | |
+| +---------------------------------------------------------+ |
+| | Protocol Type (16 bits)                                 | |
+| |      - 0x0800: IPv4                                     | |
+| +---------------------------------------------------------+ |
+| | Hardware Size (8 bits)                                  | |
+| |      - 6: MAC Address                                   | |
+| +---------------------------------------------------------+ |
+| | Protocol Size (8 bits)                                  | |
+| |      - 4: IPv4 Address                                  | |
+| +---------------------------------------------------------+ |
+| | Opcode (16 bits)                                        | |
+| |      - 1: Request                                       | |
+| |      - 2: Reply                                         | |
+| +---------------------------------------------------------+ |
+| | Sender MAC Address (48 bits)                            | |
+| +---------------------------------------------------------+ |
+| | Sender IP Address (32 bits)                             | |
+| +---------------------------------------------------------+ |
+| | Target MAC Address (48 bits)                            | |
+| +---------------------------------------------------------+ |
+| | Target IP Address (32 bits)                             | |
+| +---------------------------------------------------------+ |
+| | Optional Padding (Variable Length)                      | |
+| +---------------------------------------------------------+ |
++-------------------------------------------------------------+
++--------------------------------------------------------+
+|                    Data Link Layer                    |
+| +----------------------------------------------------+ |
+| |                     Ethernet Frame                  | |
+| | +------------------------------------------------+ | |
+| | |                   Ethernet Header                 | | |
+| | | +-----------------------------------+ +-----------+ | |
+| | | | Destination MAC Address (48 bits) | | Source MAC Address (48 bits) | | |
+| | | +-----------------------------------+ +-----------+ | |
+| | | | Type (Ethertype) (16 bits)            | | | 
+| | | | [0800: IP] [0806: ARP] [0001: IGMP]  | | |
+| | | +-------------------------------------+  | | | 
+| | | |               Payload/Data            |  |   | 
+| | | |                    (D bytes)          |  |   |
+| | | +-------------------------------------+  |   |
+| | | |               Frame Check Sequence (FCS) (32 bits)                 | |
+| | | +----------------------------------------------------+ |
+| | +----------------------------------------------------+ |
+| +--------------------------------------------------------+
+|                             + FCS                     |
+|                             + Type                    |
+|                             + Destination/Source MAC   |
++--------------------------------------------------------+
+</code></pre>
+<h3 id="changes-made"><a class="header" href="#changes-made">Changes Made</a></h3>
+<ol>
+<li><strong>Application Layer</strong>: The top layer is where the DNS protocol resides.</li>
+<li><strong>Transport Layer</strong>: The TCP segment displays as it properly belongs in this segment of the stack.</li>
+<li><strong>Internet Layer</strong>: ICMP and IGMP are indicated within the protocol section, showing that they operate at this layer.</li>
+<li><strong>Data Link Layer</strong>: Ethernet frame is shown here, accurately reflecting its place in the networking stack.</li>
+</ol>
+<pre><code class="language-plaintext">+------------------+
+|    Application    |
+|    Layer          |
+|  +--------------+ |
+|  |  DNS         | |  &lt;- Uses UDP
+|  +--------------+ |
+|                  |
+|  +--------------+ |
+|  |  HTTP        | |  &lt;- Uses TCP
+|  +--------------+ |
+|                  |
+|  +--------------+ |
+|  |  FTP         | |  &lt;- Uses TCP
+|  +--------------+ |
+|                  |
+|  +--------------+ |
+|  |  SMTP        | |  &lt;- Uses TCP
+|  +--------------+ |
++------------------+
+
++------------------+
+|    Transport      |
+|    Layer          |
+|  +--------------+ |
+|  |  TCP         | |  &lt;- Reliable, Connection-Oriented
+|  +--------------+ |
+|  |  UDP         | |  &lt;- Unreliable, Connectionless
+|  +--------------+ |
+|  |  IGMP        | |  &lt;- Internet Group Management Protocol
+|  +--------------+ |
++------------------+
+
++------------------+
+|    Internet       |
+|    Layer          |
+|  +--------------+ |
+|  |  IP          | |  &lt;- Internet Protocol
+|  +--------------+ |
+|  |  ICMP        | |  &lt;- Internet Control Message Protocol
+|  +--------------+ |
+|  |  ARP         | |  &lt;- Address Resolution Protocol
+|  +--------------+ |
++------------------+
+
++------------------+
+|    Link          |
+|    Layer          |
+|  +--------------+ |
+|  |  Ethernet     | |
+|  +--------------+ |
+|  |  Wi-Fi        | |
+|  +--------------+ |
++------------------+
+</code></pre>
+<h3 id="pdu-sizes-summary-for-ascii-art"><a class="header" href="#pdu-sizes-summary-for-ascii-art">PDU Sizes Summary for ASCII Art</a></h3>
+<h4 id="tcp-segment"><a class="header" href="#tcp-segment">TCP Segment</a></h4>
+<p>Total Size: 20 + N (TCP Header + Data)</p>
+<h4 id="ip-packet"><a class="header" href="#ip-packet">IP Packet</a></h4>
+<p>Total Size: 20 + M (IP Header + Data)</p>
+<h4 id="ethernet-frame"><a class="header" href="#ethernet-frame">Ethernet Frame</a></h4>
+<p>Total Size: 14 + D + 4 (Ethernet Header + Data + FCS)</p>
+<h3 id="explanation-of-the-above-sections"><a class="header" href="#explanation-of-the-above-sections">Explanation of the Above Sections</a></h3>
+<ol>
+<li>
+<p><strong>TCP Segment:</strong></p>
+<ul>
+<li><strong>TCP Header</strong>: Includes fields such as Source Port, Destination Port, Sequence Number, Acknowledgment Number, Flags, and Checksum.
+<ul>
+<li><strong>Flags</strong>: Control flags like SYN, ACK, FIN, etc.</li>
+<li><strong>Checksum</strong>: For error-checking the header and data.</li>
+<li><strong>Payload/Data</strong>: The actual data being transmitted.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>IP Packet:</strong></p>
+<ul>
+<li><strong>IP Header</strong>: Contains fields like Version, Header Length (IHL), Type of Service, Total Length, and more.
+<ul>
+<li><strong>Checksum</strong>: Verifies the integrity of the packet.</li>
+<li><strong>Source and Destination IP Addresses</strong>: Indicate where the packet is from and going.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Ethernet Frame:</strong></p>
+<ul>
+<li><strong>Ethernet Header</strong>: Includes Destination and Source MAC Addresses, and Ethertype.
+<ul>
+<li><strong>Payload/Data</strong>: The data being carried.</li>
+<li><strong>Frame Check Sequence (FCS)</strong>: A CRC value used for integrity checking.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="conclusion-1"><a class="header" href="#conclusion-1">Conclusion</a></h3>
+<p>These representations showcase how protocol headers, checksums, flags, and the contents of PDUs are structured at different layers of the OSI model. Each protocol has defined fields to manage the transmission of data effectively, ensuring integrity and proper delivery across networks.</p>
+<hr />
+<h2 id="tcpip"><a class="header" href="#tcpip">TCP/IP</a></h2>
+<p>or Internet Protocol Suite, is a more streamlined networking framework compared to the OSI model. It consists of four layers, each corresponding to certain functionalities in the network communication process. Here’s a breakdown of the TCP/IP model layers:</p>
+<ol>
+<li>
+<p><strong>Application Layer</strong>: This is the topmost layer of the TCP/IP model. It encompasses all protocols that provide services directly to user applications. This layer is responsible for processes such as data formatting, encryption, and application-level interactions. Common protocols include:</p>
+<ul>
+<li><strong>HTTP/HTTPS</strong>: For web browsing.</li>
+<li><strong>SMTP</strong>: For email transmission.</li>
+<li><strong>FTP</strong>: For file transfer.</li>
+<li><strong>DNS</strong>: For domain name resolution[S1].</li>
+</ul>
+</li>
+<li>
+<p><strong>Transport Layer</strong>: This layer provides reliable or unreliable delivery of data between applications. It ensures that messages are delivered in the correct order and without errors. The key protocols at this layer are:</p>
+<ul>
+<li><strong>TCP (Transmission Control Protocol)</strong>: Provides <strong>reliable, connection-oriented service with error recovery and flow control</strong>.</li>
+<li><strong>UDP (User Datagram Protocol)</strong>: Provides an <strong>unreliable, connectionless service suitable for applications that require fast transmission without the overhead of reliability.</strong>[S1]</li>
+</ul>
+</li>
+<li>
+<p><strong>Internet Layer</strong>: The internet layer is responsible for <strong>addressing, packaging, and routing functions</strong>. It manages the delivery of packets across different networks and provides logical addressing through IP addresses. Key protocols include:</p>
+<ul>
+<li><strong>IP (Internet Protocol)</strong>: The primary protocol for <strong>routing packets</strong> across networks (with versions IPv4 and IPv6).</li>
+<li><strong>ICMP (Internet Control Message Protocol)</strong>: Used for <strong>diagnostic and error-reporting</strong>[S1] purposes (e.g., ping).</li>
+<li><strong>ARP (Address Resolution Protocol)</strong>: <strong>Resolves IP addresses to MAC addresses.</strong>[S1]</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Interface Layer (or Link Layer)</strong>: This is the lowest layer, which is responsible for the physical transmission of data over a network medium. It encompasses the hardware and protocols that operate on the local network segment. Functions include <strong>framing, addressing, and error detection.</strong> Common protocols and technologies at this layer include:</p>
+<ul>
+<li><strong>Ethernet</strong>: The standard for wired local area networks (LAN).</li>
+<li><strong>Wi-Fi</strong>: Wireless local area networking technology.</li>
+<li><strong>PPP (Point-to-Point Protocol)</strong>: Used for direct connections between two network nodes.</li>
+</ul>
+</li>
+</ol>
+<h3 id="summary"><a class="header" href="#summary">Summary</a></h3>
+<ul>
+<li><strong>Application Layer</strong>: Interfaces with user applications.</li>
+<li><strong>Transport Layer</strong>: Handles end-to-end communication and error-checking.</li>
+<li><strong>Internet Layer</strong>: Manages packet addressing and routing.</li>
+<li><strong>Network Interface Layer</strong>: Deals with the physical transmission of data.</li>
+</ul>
+<hr />
+<h2 id="network-islolation"><a class="header" href="#network-islolation">Network Islolation</a></h2>
+<h3 id="assets-on-net"><a class="header" href="#assets-on-net">assets on net</a></h3>
+<ul>
+<li>Internal <a href="./firewall.html">firewalls</a></li>
+<li><a href="../identification/identification.html">Access control list(ACL)</a></li>
+<li>Demateralized Zone(DMZ)</li>
+</ul>
+<h4 id="dmz"><a class="header" href="#dmz">DMZ</a></h4>
+<ul>
+<li>DNS</li>
+<li>FTP</li>
+<li>VoIP</li>
+<li>Web Servers</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../environment/kioptrix.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../network/dns.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../environment/kioptrix.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../network/dns.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

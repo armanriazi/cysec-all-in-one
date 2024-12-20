@@ -1,0 +1,415 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Firewall - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="../INTRO.html"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="../threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="../webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="../webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item "><a href="../webapp/api.html"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item "><a href="../webapp/ssr.html"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="../audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="../identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="../identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="../network/network.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/firewall.html" class="active"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="../network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="../network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="../network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="../network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="../network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="../network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="../network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="../network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="../cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="../data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="../data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="../data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="../searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="../database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="../malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="../penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="../linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="../linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="../linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="../protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="../protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="../protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="../protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="../protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="../standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="../other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="../other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="../other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="../other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../attack/attack.html"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="../risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="../Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="../Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//network/firewall.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="firewall"><a class="header" href="#firewall">Firewall</a></h2>
+<h3 id="limitation-of-firewall"><a class="header" href="#limitation-of-firewall">Limitation of Firewall</a></h3>
+<ul>
+<li>Does not prevent backdoor attack[S1]</li>
+<li>Does not prevent password misuse</li>
+<li>Does not protect the net from internal atks</li>
+<li>Cannot do anything if the net design and conf is faulty</li>
+<li>Not able to prevent social engineering threats</li>
+</ul>
+<p align="center">
+  <img src="..\assets\images\firewall-1.jpg" alt="Firewall[1]">
+</p>
+<h4 id="packet-filtering"><a class="header" href="#packet-filtering">Packet filtering</a></h4>
+<ul>
+<li>ip</li>
+<li>protocols</li>
+<li>ports</li>
+<li>rules</li>
+</ul>
+<h3 id="waf"><a class="header" href="#waf">WAF</a></h3>
+<p>WAFs stands for <strong>Web Application Firewalls</strong>.</p>
+<p>A Web Application Firewall is a security solution designed to monitor, filter, and protect web applications from various types of online threats and attacks, including SQL injection, cross-site scripting (XSS), and other application-layer vulnerabilities. WAFs operate at the application layer (Layer 7 of the OSI model) and analyze incoming traffic to and from a web application.</p>
+<p>Key features of WAFs include:</p>
+<ul>
+<li><strong>Traffic Monitoring</strong>: Analyzing HTTP/HTTPS traffic to identify and block malicious requests.</li>
+<li><strong>Rule-Based Protection</strong>: Applying predefined or custom rules to filter out harmful traffic.</li>
+<li><strong>Threat Detection</strong>: Utilizing security policies to recognize abnormal behavior and potential attacks.</li>
+<li><strong>Session Protection</strong>: Managing and securing user sessions to prevent session hijacking.</li>
+</ul>
+<p>WAFs can be deployed as hardware appliances, software solutions, or cloud-based services.</p>
+<p>Here’s the updated comparison table of popular Web Application Firewalls (WAFs), including both commercial and open-source options, along with their estimated usage rates and their integration capabilities with Intrusion Detection Systems (IDS), Intrusion Prevention Systems (IPS), and other filtering products.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>WAF Tool</strong></th><th><strong>Deployment</strong></th><th><strong>Key Features</strong></th><th><strong>Supported Platforms</strong></th><th><strong>Pricing</strong></th><th><strong>Rate of Usage (Approx.)</strong></th><th><strong>Integration with IDS/IPS</strong></th></tr></thead><tbody>
+<tr><td><strong>AWS WAF</strong></td><td>Cloud-Based</td><td>Integrates with AWS services, SQL injection/XSS protections</td><td>Rust, Node.js, Java, .NET Core</td><td>Pay-as-you-go</td><td>~20%</td><td>Excellent (works well with AWS Shield, etc.)</td></tr>
+<tr><td><strong>Cloudflare WAF</strong></td><td>Cloud-Based</td><td>Global CDN, DDoS protection, OWASP rules</td><td>Rust, Node.js, Java, .NET Core</td><td>Freemium and paid plans</td><td>~30%</td><td>Excellent (integrates with Cloudflare’s security suite)</td></tr>
+<tr><td><strong>Imperva WAF</strong></td><td>Cloud-Based/On-Premises</td><td>Advanced threat intelligence, bot protection</td><td>Rust, Node.js, Java, .NET Core</td><td>Subscription-based</td><td>~15%</td><td>Very Good (integrates with various IPS solutions)</td></tr>
+<tr><td><strong>F5 Advanced WAF</strong></td><td>On-Premises/Cloud</td><td>Application security, DDoS protection, API security</td><td>Java, .NET Core</td><td>License-based</td><td>~10%</td><td>Very Good (has strong integration capabilities)</td></tr>
+<tr><td><strong>Barracuda WAF</strong></td><td>Hardware/VM/Cloud</td><td>Malware scanning, identity protection</td><td>Rust, Node.js, Java, .NET Core</td><td>Subscription-based</td><td>~8%</td><td>Good (supports integration with various security tools)</td></tr>
+<tr><td><strong>ModSecurity (with Nginx/Apache)</strong></td><td>Open Source/Gatekeeper</td><td>OWASP Core Rule Set, customizable rules</td><td>Rust, Node.js, Java, .NET Core</td><td>Free (self-hosted)</td><td>~5%</td><td>Good (can integrate with IDS/IPS via configuration)</td></tr>
+<tr><td><strong>NAXSI</strong></td><td>Open Source</td><td>Nginx module for filtering malicious requests</td><td>Nginx (works well with Ruby)</td><td>Free (self-hosted)</td><td>~3%</td><td>Moderate (requires additional configuration for IDS integration)</td></tr>
+<tr><td><strong>WebKnight</strong></td><td>Open Source</td><td>.NET application firewall, customizable rules</td><td>.NET Framework</td><td>Free (self-hosted)</td><td>~2%</td><td>Moderate (can work with IDS but less common)</td></tr>
+<tr><td><strong>Openresty + Lua</strong></td><td>Open Source</td><td>Customizable application security based on NGINX and Lua scripts</td><td>Rust, Node.js, Java, .NET Core</td><td>Free (self-hosted)</td><td>~2%</td><td>Moderate (requires manual configuration for integration)</td></tr>
+<tr><td><strong>Access Control WAF</strong></td><td>Open Source</td><td>Focus on managing access control and authentication</td><td>Java, .NET Core</td><td>Free (self-hosted)</td><td>&lt;1%</td><td>Low (minimal integration capabilities)</td></tr>
+</tbody></table>
+</div>
+<h3 id="key"><a class="header" href="#key">Key</a></h3>
+<ul>
+<li><strong>Excellent</strong>: Seamless integration with multiple IDS/IPS and filtering products.</li>
+<li><strong>Very Good</strong>: Strong integration capabilities, generally easy to configure.</li>
+<li><strong>Good</strong>: Detectable integration; some configuration may be required.</li>
+<li><strong>Moderate</strong>: Feasible integration but potentially more complex or less common.</li>
+<li><strong>Low</strong>: Limited to no integration with IDS/IPS systems.</li>
+</ul>
+<p>When evaluating a WAF’s integrity and compatibility with IDS/IPS systems, it’s crucial to assess the ease of integration and the level of support provided by each WAF. Each organization’s specific requirements and existing security infrastructure will guide the choice of which WAF is the best fit.</p>
+<h5 id="circuit-level-gw"><a class="header" href="#circuit-level-gw">Circuit-level gw</a></h5>
+<ul>
+<li>Between session and transportlayer of OSI model</li>
+<li>App layer of TCP/IP model</li>
+</ul>
+<p>A circuit-level gateway is a <strong>type of firewall</strong> that operates at the transport layer (Layer 4) of the OSI model. It provides a means of controlling network traffic over a network, primarily focused on <strong>monitoring and managing TCP connections</strong>. Here are the key characteristics and functionalities of circuit-level gateways:</p>
+<h6 id="key-characteristics"><a class="header" href="#key-characteristics">Key Characteristics</a></h6>
+<ol>
+<li>
+<p><strong>Connection Monitoring</strong>:</p>
+<ul>
+<li>A circuit-level gateway establishes a virtual circuit between clients and servers in a networked environment and monitors the traffic that passes through it.</li>
+</ul>
+</li>
+<li>
+<p><strong>Session Management</strong>:</p>
+<ul>
+<li>Circuit-level gateways maintain the state of each connection. They keep track of sessions and verify that packets are part of a valid session.</li>
+</ul>
+</li>
+<li>
+<p><strong>Protocol Independence</strong>:</p>
+<ul>
+<li>They can work with any protocol that operates above the transport layer, allowing them to provide security for a variety of applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Packet Inspection</strong>:</p>
+<ul>
+<li><strong>Unlike application-layer gateways, circuit-level gateways do not inspect the contents of packets; they only monitor the headers and are concerned with the state and management of connections.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Performance</strong>:</p>
+<ul>
+<li>Circuit-level gateways tend to be faster than application-layer gateways because they do not analyze the data content, leading to lower processing overhead.</li>
+</ul>
+</li>
+</ol>
+<h6 id="functions"><a class="header" href="#functions">Functions</a></h6>
+<ul>
+<li><strong>Traffic Filtering</strong>: Circuit-level gateways can enforce policies for which <strong>types of traffic are allowed or denied</strong> based on the established connections.</li>
+<li><strong>Address Translation</strong>: Some circuit-level gateways may perform Network Address Translation (NAT), allowing multiple devices on a local network to share a single public IP address.</li>
+<li><strong>Security</strong>: They provide a level of security by <strong>preventing unauthorized access to internal networks and managing which external entities can establish connections.</strong></li>
+</ul>
+<h6 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h6>
+<ul>
+<li><strong>VPNs (Virtual Private Networks)</strong>: Circuit-level gateways are often <strong>used in VPNs</strong> to establish secure connections between remote users and internal networks.</li>
+<li><strong>Network Address Translation (NAT)</strong>: They can <strong>perform NAT, which helps in managing IP address usage.</strong></li>
+</ul>
+<h5 id="limitations"><a class="header" href="#limitations">Limitations</a></h5>
+<ul>
+<li><strong>Limited Inspection</strong>[S1]: Due to the lack of deep packet inspection, circuit-level gateways may be less effective at detecting certain types of malicious activities or sophisticated attacks compared to application-level firewalls.</li>
+<li><strong>State Management</strong>[S1]: If the connection state is not properly managed, it could lead to vulnerabilities, such as session hijacking.</li>
+</ul>
+<p>In summary, circuit-level gateways serve a crucial role in managing TCP connections and providing a basic structural layer of security in network communications, particularly <strong>suitable for scenarios where performance and session management are priorities</strong>.</p>
+<h5 id="app-layer-gw"><a class="header" href="#app-layer-gw">App layer gw</a></h5>
+<ul>
+<li>packet headers/data</li>
+<li>filtering content/URL</li>
+<li>authentication</li>
+</ul>
+<h5 id="app-proxy"><a class="header" href="#app-proxy">App proxy</a></h5>
+<ul>
+<li>filters messages at app layer to protect net resources</li>
+<li>known as a proxy firewall/gw firewall</li>
+</ul>
+<h5 id="smli"><a class="header" href="#smli">SMLI</a></h5>
+<ul>
+<li>advance packet filtering for all 7 layers</li>
+</ul>
+<h6 id="stateless-multilayer-inspection-smli"><a class="header" href="#stateless-multilayer-inspection-smli">Stateless Multilayer Inspection (SMLI)</a></h6>
+<ol>
+<li>
+<p><strong>Definition</strong>:</p>
+<ul>
+<li>SMLI is a technique used in network security where <strong>packets are analyzed at multiple layers of the OSI model</strong> without maintaining state information about the connection. It <strong>focuses on inspecting each packet independently.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Purpose</strong>:</p>
+<ul>
+<li>The goal of SMLI is to enhance security by applying checks at various protocol layers—such as the network layer, transport layer, and sometimes the application layer—<strong>without needing to remember connection states.</strong>[S1]</li>
+</ul>
+</li>
+<li>
+<p><strong>Features</strong>:</p>
+<ul>
+<li><strong>Packet Filtering</strong>: Performs filtering based on predefined rules <strong>without needing context from previous packets.</strong>[S1]</li>
+<li><strong>Layered Inspection</strong>: Evaluates packets according to multiple layers of protocols to identify potentially malicious traffic.</li>
+<li><strong>Simplicity</strong>: Simpler to implement compared to stateful inspection since it does not require management of connection states.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Firewalls</strong>: <strong>Used in some firewall</strong> implementations to filter traffic based on objective criteria at different layers.</li>
+<li><strong>Intrusion Detection Systems (IDS)</strong>: Employed in IDS to quickly analyze and respond to potential threats without needing a deep contextual understanding of sessions.</li>
+</ul>
+</li>
+</ol>
+<h6 id="importance-in-cybersecurity"><a class="header" href="#importance-in-cybersecurity">Importance in Cybersecurity</a></h6>
+<ul>
+<li>SMLI can be beneficial for environments where speed is crucial, and quick decisions on packet handling are required. It provides a straightforward mechanism for filtering traffic but may <strong>not be as effective at identifying sophisticated attacks that require context, such as those relying on session information or established connections.</strong></li>
+</ul>
+<blockquote>
+<p>Remember: SMLI used in firewall, Circuit-gw used in VPN</p>
+</blockquote>
+<h5 id="nat"><a class="header" href="#nat">NAT</a></h5>
+<ul>
+<li>allows devices on a private net to <strong>communicate with the internet</strong></li>
+<li><strong>hiding their IP address from external devices</strong></li>
+</ul>
+<h5 id="vpn"><a class="header" href="#vpn">VPN</a></h5>
+<ul>
+<li>protect against unauthorized:</li>
+<li>users <strong>intercepting &amp; exploiting a VPN</strong> con.</li>
+</ul>
+<p align="center">
+  <img src="..\assets\images\firewall-osi.jpg" alt="Firewall-OSI[1]">
+</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../network/dns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../network/ids-ips.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../network/dns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../network/ids-ips.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

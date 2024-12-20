@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introductory - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="INTRO.html" class="active"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item "><a href="webapp/api.html"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item "><a href="webapp/ssr.html"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="network/network.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item "><a href="network/firewall.html"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="attack/attack.html"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//INTRO.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cybersecurity"><a class="header" href="#cybersecurity">CyberSecurity</a></h1>
+<p><strong>I have developed a range of practical scenarios for each topic. Should you need access to these resources, please do not hesitate to contact me. Furthermore, I have delivered over 100 tailored Cybersecurity Assessment Reports for a wide variety of organizations, effectively addressing their distinct risk profiles and specific requirements.</strong></p>
+<h2 id="the-complete-architectures-guide"><a class="header" href="#the-complete-architectures-guide">The Complete Architecture’s Guide</a></h2>
+<p align="center">
+  <img src="https://i.imgur.com/KTEorEU.png" alt="CyberSecurity : The Complete Architecture's Guide" height="250px">
+</p>
+<h2 id="introductory"><a class="header" href="#introductory">Introductory</a></h2>
+<h3 id="layers-of-security-in-cybersecurity"><a class="header" href="#layers-of-security-in-cybersecurity">Layers of security in cybersecurity</a></h3>
+<div class="table-wrapper"><table><thead><tr><th><strong>Security Layer</strong></th><th><strong>Description</strong></th><th><strong>Key Measures</strong></th></tr></thead><tbody>
+<tr><td><strong>1. Physical Security</strong></td><td>Protects physical components of information systems.</td><td>Secure access, surveillance, environmental controls</td></tr>
+<tr><td><strong>2. Network Security</strong></td><td>Safeguards infrastructure and data during transmission.</td><td>Firewalls, IDPS, VPNs, secure networks</td></tr>
+<tr><td><strong>3. Endpoint Security</strong></td><td>Protects individual devices such as computers and mobile devices.</td><td>Antivirus, antimalware, EDR tools, device encryption</td></tr>
+<tr><td><strong>4. Application Security</strong></td><td>Secures applications from vulnerabilities throughout their lifecycle.</td><td>Secure coding, testing, patch management, WAFs</td></tr>
+<tr><td><strong>5. Data Security</strong></td><td>Protects sensitive data from unauthorized access and leaks.</td><td>Data encryption, access controls, data masking, backups</td></tr>
+<tr><td><strong>6. User Awareness and Training</strong></td><td>Ensures employees recognize threats and understand security policies.</td><td>Training on phishing, social engineering, safe practices</td></tr>
+<tr><td><strong>7. Identity and Access Management</strong></td><td>Manages user identities and controls access based on roles.</td><td>MFA, SSO, strict password policies</td></tr>
+<tr><td><strong>8. Incident Response and Management</strong></td><td>Establishes plans for responding to security incidents.</td><td>Incident response team, drills, reporting procedures</td></tr>
+<tr><td><strong>9. Security Monitoring and Logging</strong></td><td>Monitors systems for signs of security breaches continuously.</td><td>SIEM systems for log aggregation and analysis</td></tr>
+<tr><td><strong>10. Compliance and Governance</strong></td><td>Ensures adherence to regulations and standards.</td><td>Periodic audits, assessments, and compliance checks</td></tr>
+</tbody></table>
+</div>
+<p>Implementing these layered security controls provides a comprehensive defense against various threats, enhancing resilience and reducing the likelihood of successful attacks.</p>
+<h2 id="information-assurance-ia"><a class="header" href="#information-assurance-ia">Information Assurance (IA)</a></h2>
+<p>IA is for protecting information system.</p>
+<p align="center">
+  <img src="./assets/images/cia.png" alt="CIA">
+</p>
+<h3 id="integrity"><a class="header" href="#integrity">Integrity</a></h3>
+<ul>
+<li>Having AntiVirus</li>
+<li>Having Policies</li>
+<li>Data will not be tampered(altered or destroyed)</li>
+</ul>
+<h3 id="availability"><a class="header" href="#availability">Availability</a></h3>
+<ul>
+<li>Who are allowed/blocked to access</li>
+</ul>
+<h3 id="authetication"><a class="header" href="#authetication">Authetication</a></h3>
+<ul>
+<li>Identify facets</li>
+</ul>
+<h3 id="confidentiality"><a class="header" href="#confidentiality">Confidentiality</a></h3>
+<ul>
+<li>Access by those authorized</li>
+</ul>
+<h3 id="non-repudiation"><a class="header" href="#non-repudiation">Non-repudiation</a></h3>
+<ul>
+<li>someone can not deny his/her action</li>
+</ul>
+<hr />
+<h2 id="network-defence-approch-1"><a class="header" href="#network-defence-approch-1">Network Defence Approch [1]</a></h2>
+<h3 id="preventive"><a class="header" href="#preventive">Preventive</a></h3>
+<ul>
+<li>Firewalls</li>
+<li>Prevention Systems(IDS, IPS systems like snort)</li>
+<li>Intrusion Detection</li>
+<li>AntiVirus</li>
+</ul>
+<h3 id="reactive"><a class="header" href="#reactive">Reactive</a></h3>
+<ul>
+<li>Responds to past and present threads</li>
+<li>Cover net monitoring for anomalies, forensics, and incident response</li>
+<li>Ad-blockers</li>
+<li>Spam filters</li>
+<li>Password manager</li>
+<li>AntiVirus programming</li>
+</ul>
+<h3 id="retrospective"><a class="header" href="#retrospective">Retrospective</a></h3>
+<ul>
+<li>Causes for atk(after atks)</li>
+<li>Use protocols to:</li>
+<li>Analyze</li>
+<li>Monitored net traffic</li>
+<li>Prevent it from ever happening</li>
+</ul>
+<h3 id="proactive"><a class="header" href="#proactive">Proactive</a></h3>
+<ul>
+<li>Anticipation of an atk against:</li>
+<li>With aims of countering future atks.</li>
+</ul>
+<hr />
+<h3 id="data-security-and-threat-detection"><a class="header" href="#data-security-and-threat-detection">Data security and threat detection</a></h3>
+<h4 id="terminology-in-data-security"><a class="header" href="#terminology-in-data-security">Terminology in Data Security</a></h4>
+<div class="table-wrapper"><table><thead><tr><th><strong>Term</strong></th><th><strong>Definition</strong></th><th><strong>Common Use Cases</strong></th></tr></thead><tbody>
+<tr><td><strong>True Positive (TP)</strong></td><td>A correct identification of a security threat. The system correctly detects an actual threat.</td><td>Identifying a successful malware attack on a system.</td></tr>
+<tr><td><strong>True Negative (TN)</strong></td><td>A correct identification of benign activity. The system correctly identifies that there is no threat.</td><td>Confirming that a legitimate user activity is not malicious.</td></tr>
+<tr><td><strong>False Positive (FP)</strong></td><td>An incorrect identification where a benign activity is incorrectly flagged as a threat.</td><td>Detecting legitimate software behavior as malware, leading to unnecessary alerts.</td></tr>
+<tr><td><strong>False Negative (FN)</strong></td><td>An incorrect identification where an actual threat goes undetected or is incorrectly classified as benign.</td><td>Failing to identify a security breach because the detection system did not recognize it.</td></tr>
+<tr><td><strong>Precision</strong></td><td>The ratio of true positives to the total predicted positives (TP / (TP + FP)). Higher precision means fewer false positives.</td><td>Important in environments where false alerts can disrupt operations.</td></tr>
+<tr><td><strong>Recall (Sensitivity)</strong></td><td>The ratio of true positives to the total actual positives (TP / (TP + FN)). Higher recall means better detection of threats.</td><td>Critical for ensuring that security measures catch as many threats as possible.</td></tr>
+<tr><td><strong>F1 Score</strong></td><td>The harmonic mean of precision and recall, providing a balance between the two (2 <em>(Precision</em> Recall) / (Precision + Recall)).</td><td>Useful in scenarios where both false positives and false negatives are costly.</td></tr>
+<tr><td><strong>ROC Curve</strong></td><td>A graphical representation of the true positive rate versus the false positive rate.</td><td>Helps evaluate the trade-offs between sensitivity and specificity in threat detection models.</td></tr>
+</tbody></table>
+</div>
+<h4 id="use-cases-for-each-term"><a class="header" href="#use-cases-for-each-term">Use Cases for Each Term</a></h4>
+<ul>
+<li>
+<p><strong>True Positive (TP):</strong></p>
+<ul>
+<li>Security software successfully identifies and quarantines a phishing email that contains a malicious link.</li>
+</ul>
+</li>
+<li>
+<p><strong>True Negative (TN):</strong></p>
+<ul>
+<li>An employee’s genuine access to a secure document is correctly classified as permitted, preventing unnecessary alerts to security teams.</li>
+</ul>
+</li>
+<li>
+<p><strong>False Positive (FP):</strong></p>
+<ul>
+<li>An application that performs normal data transmission is flagged and quarantined as potential data exfiltration, leading to communication disruptions.</li>
+</ul>
+</li>
+<li>
+<p><strong>False Negative (FN):</strong></p>
+<ul>
+<li>A new strain of malware infiltrates the network, but the detection system fails to recognize it due to outdated signatures, allowing the malware to execute.</li>
+</ul>
+</li>
+<li>
+<p><strong>Precision:</strong></p>
+<ul>
+<li>In a company where every alert has a significant operational cost, high precision is crucial to minimize unnecessary investigations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Recall (Sensitivity):</strong></p>
+<ul>
+<li>In a healthcare environment, high recall is vital to catch all potential breaches that might expose patient information, regardless of the resulting false alarms.</li>
+</ul>
+</li>
+<li>
+<p><strong>F1 Score:</strong></p>
+<ul>
+<li>In a fraud detection system where both missing fraudulent transactions and wrongly flagging legitimate transactions can lead to financial losses.</li>
+</ul>
+</li>
+<li>
+<p><strong>ROC Curve:</strong></p>
+<ul>
+<li>A security analyst uses the ROC curve to determine the optimal threshold for a new intrusion detection system that balances the rates of true and false positives.</li>
+</ul>
+</li>
+</ul>
+<p>These metrics guide organizations in their threat detection efforts, helping them <strong>fine-tune their security measures</strong> while minimizing operational disruptions and maximizing security efficacy. Regular analysis of these metrics can inform necessary adjustments and enhancements to detection algorithms and configurations.</p>
+<h2 id="indicates-the-techniques"><a class="header" href="#indicates-the-techniques">Indicates the Techniques</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Phase</th><th>Description</th><th>Techniques (Examples)</th></tr></thead><tbody>
+<tr><td><strong>Reconnaissance</strong></td><td>Gathering information about the target to identify vulnerabilities.</td><td>- Open Source Intelligence (OSINT)<br>- Network Scanning<br>- Social Engineering</td></tr>
+<tr><td><strong>Resource Development</strong></td><td>Establishing or acquiring resources needed for the attack.</td><td>- Malware Development<br>- Infrastructure Setup (e.g., servers for command and control)</td></tr>
+<tr><td><strong>Initial Access</strong></td><td>Gaining entry into the target environment.</td><td>- Phishing (e.g., Email attachments, links)<br>- Exploit Public-Facing Applications</td></tr>
+<tr><td><strong>Execution</strong></td><td>Running malicious code on the target system.</td><td>- Command-Line Interface (CLI) Execution<br>- Malicious Scripts</td></tr>
+<tr><td><strong>Persistence</strong></td><td>Maintaining access to the target over time.</td><td>- Registry Run Keys/Startup Folder<br>- Scheduled Tasks</td></tr>
+<tr><td><strong>Privilege Escalation</strong></td><td>Gaining higher privileges than initially acquired.</td><td>- Exploiting Vulnerabilities<br>- Bypass User Account Control (UAC)</td></tr>
+<tr><td><strong>Defense Evasion</strong></td><td>Avoiding detection and defensive measures.</td><td>- Obfuscated Files or Information<br>- Timestomp</td></tr>
+<tr><td><strong>Credential Access</strong></td><td>Obtaining valid credentials for further access.</td><td>- Credential Dumping<br>- Keylogging</td></tr>
+<tr><td><strong>Discovery</strong></td><td>Understanding the environment for further action.</td><td>- System Information Discovery<br>- Network Share Discovery</td></tr>
+<tr><td><strong>Lateral Movement</strong></td><td>Moving within the network after initial access.</td><td>- Remote Services (e.g., SMB, RDP)<br>- Pass-the-Hash</td></tr>
+<tr><td><strong>Collection</strong></td><td>Gathering sensitive data from the target.</td><td>- Data Staged for Exfiltration<br>- Screen Capture</td></tr>
+<tr><td><strong>Command and Control</strong></td><td>Establishing a channel to control compromised systems.</td><td>- Web Service (e.g., HTTP, HTTPS)<br>- DNS Tunneling</td></tr>
+<tr><td><strong>Exfiltration</strong></td><td>Extracting data from the target.</td><td>- Data Encoding/Obfuscation<br>- Exfiltration Over Command and Control Channel</td></tr>
+<tr><td><strong>Impact</strong></td><td>Disrupting the target’s operations or damaging systems.</td><td>- Data Destruction<br>- Service Stop</td></tr>
+</tbody></table>
+</div>
+<h2 id="common-vulnerability"><a class="header" href="#common-vulnerability">Common vulnerability</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Vulnerability</th><th>Description</th><th>Danger Level</th><th>Common Use-Cases</th><th>Prevalence (%)</th><th>Challenges Faced by Companies</th><th>Mitigation Strategies</th><th>Example Attacks</th><th>Specific Attack Vectors</th></tr></thead><tbody>
+<tr><td><strong>XSS</strong></td><td>Enables attackers to execute scripts in the user’s browser, potentially stealing cookies.</td><td>High</td><td>User input fields, comment sections</td><td>~40%</td><td>Proper input sanitization, CSP</td><td>Sanitize user inputs, use Content Security Policy (CSP)</td><td>Stealing session cookies, redirecting users</td><td>Stored XSS, Reflected XSS, DOM-based XSS</td></tr>
+<tr><td><strong>CSRF</strong></td><td>Tricks users into making unwanted actions on web applications where they are authenticated.</td><td>Medium</td><td>Form submissions, state-changing requests</td><td>~30%</td><td>Tokenization, user session management</td><td>Implement anti-CSRF tokens, same-site cookies</td><td>Changing user email or password without consent</td><td>State-changing requests</td></tr>
+<tr><td><strong>SQL Injection</strong></td><td>Allows attackers to execute arbitrary SQL queries on the database, leading to data exposure or manipulation.</td><td>High</td><td>Dynamic database queries</td><td>~35%</td><td>Input validation, proper ORM usage</td><td>Use prepared statements, parameterized queries</td><td>Extracting sensitive data, deleting records</td><td>Tautology-based, Union-based, Error-based</td></tr>
+<tr><td><strong>XXE</strong></td><td>Occurs when an external entity is injected through XML input, leading to data exposure.</td><td>High</td><td>XML processing, API integrations</td><td>~25%</td><td>Misconfigured parsers</td><td>Disable DTD processing, use safer libraries</td><td>Reading local files, SSRF (Server-Side Request Forgery)</td><td>External entity resolution</td></tr>
+<tr><td><strong>LFI</strong></td><td>Allows an attacker to include files on a server through user input.</td><td>High</td><td>Misconfigured web applications</td><td>~20%</td><td>Input validation, file access controls</td><td>Validate and sanitize user inputs, restrict file paths</td><td>Accessing sensitive files (e.g., /etc/passwd)</td><td>Directory traversal</td></tr>
+<tr><td><strong>RCE</strong></td><td>Remote Code Execution allows attackers to execute arbitrary commands on the server.</td><td>Critical</td><td>File upload, deserialization vulnerabilities</td><td>~15%</td><td>Code reviews, secure coding practices</td><td>Validate inputs, use whitelists for file types</td><td>Executing shell commands, malware installation</td><td>Code injection, Command injection</td></tr>
+<tr><td><strong>Insecure Direct Object Reference (IDOR)</strong></td><td>Allows attackers to access or modify objects that they are not authorized to.</td><td>Medium</td><td>Parameter manipulation in URL requests</td><td>~20%</td><td>Authorization checks</td><td>Implement access controls, validate user permissions</td><td>Accessing other users’ resources</td><td>URL manipulation</td></tr>
+<tr><td><strong>Open Redirect</strong></td><td>Allows an attacker to redirect users to an untrusted site, often used for phishing.</td><td>Medium</td><td>Link manipulation</td><td>~10%</td><td>Input validation, whitelisting</td><td>Validate redirect URLs, use a whitelist for valid URLs</td><td>Phishing attacks, redirecting to malicious sites</td><td>Redirecting with query parameters</td></tr>
+<tr><td><strong>HTTP Response Splitting</strong></td><td>Attacker manipulates HTTP headers to inject additional responses.</td><td>Medium</td><td>Unvalidated inputs in headers</td><td>~5%</td><td>Header validation</td><td>Sanitize user inputs, validate and encode headers</td><td>HTTP header injection, session fixation</td><td>Header injection</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="AboutMe.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="threats/threats.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="AboutMe.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="threats/threats.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

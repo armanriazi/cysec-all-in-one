@@ -1,0 +1,662 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Attack - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="../INTRO.html"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="../threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="../webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="../webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item "><a href="../webapp/api.html"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item "><a href="../webapp/ssr.html"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="../audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="../identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="../identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="../network/network.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item "><a href="../network/firewall.html"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="../network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="../network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="../network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="../network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="../network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="../network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="../network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="../network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="../cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="../data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="../data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="../data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="../searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="../database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="../malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="../penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="../linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="../linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="../linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="../protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="../protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="../protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="../protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="../protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="../standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="../other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="../other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="../other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="../other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../attack/attack.html" class="active"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="../risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="../Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="../Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//attack/attack.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="1-understand-the-basics-of-red-teaming"><a class="header" href="#1-understand-the-basics-of-red-teaming">1. Understand the Basics of Red Teaming</a></h3>
+<ul>
+<li><strong>Differentiation</strong>: Understand the difference between red teaming (offensive security) and blue teaming (defensive security). Red teams simulate attacks, while blue teams defend against them.</li>
+<li><strong>Objectives</strong>: The primary goal is to assess and improve security posture, not just to exploit vulnerabilities.</li>
+</ul>
+<h3 id="2-familiarize-with-attack-frameworks"><a class="header" href="#2-familiarize-with-attack-frameworks">2. Familiarize with Attack Frameworks</a></h3>
+<ul>
+<li><strong>MITRE ATT&amp;CK</strong>: Learn the tactics, techniques, and procedures (TTPs) outlined in the MITRE ATT&amp;CK framework. This can help structure your attack simulations based on real-world techniques.</li>
+<li><strong>Lockheed Martin Cyber Kill Chain</strong>: Understand the phases of an attack (reconnaissance, weaponization, delivery, exploitation, installation, command &amp; control (C2), and actions on objectives).</li>
+</ul>
+<h3 id="3-reconnaissance-phase"><a class="header" href="#3-reconnaissance-phase">3. Reconnaissance Phase</a></h3>
+<ul>
+<li><strong>OSINT</strong>: Utilize open-source intelligence tools to gather information about the target. Sources may include social media, DNS records, and corporate websites.</li>
+<li><strong>Identify Attack Vectors</strong>: Determine potential entry points, such as employee emails, web applications, and network services.</li>
+</ul>
+<h3 id="4-planning-and-tool-selection"><a class="header" href="#4-planning-and-tool-selection">4. Planning and Tool Selection</a></h3>
+<ul>
+<li><strong>Toolkits</strong>: Be familiar with tools commonly used in red teaming such as Metasploit, Burp Suite, Cobalt Strike, and custom scripts.</li>
+<li><strong>Scripting</strong>: Know how to write scripts (Python, PowerShell) to automate tasks or develop custom exploits.</li>
+</ul>
+<h3 id="5-execution-of-attacks"><a class="header" href="#5-execution-of-attacks">5. Execution of Attacks</a></h3>
+<ul>
+<li><strong>Phishing Simulations</strong>: Design phishing campaigns to test employee awareness and response to social engineering attacks.</li>
+<li><strong>Exploitation</strong>: Conduct penetration testing using techniques such as SQL injection or privilege escalation based on the reconnaissance findings.</li>
+</ul>
+<h3 id="6-maintaining-access"><a class="header" href="#6-maintaining-access">6. Maintaining Access</a></h3>
+<ul>
+<li><strong>Backdoors</strong>: Simulate the installation of backdoors or command and control mechanisms without being detected.</li>
+<li><strong>Credential Harvesting</strong>: Use techniques like <strong>mimikatz or harvesting browser credentials via phishing</strong>.</li>
+</ul>
+<h3 id="7-covering-your-tracks"><a class="header" href="#7-covering-your-tracks">7. Covering Your Tracks</a></h3>
+<ul>
+<li><strong>Log Management</strong>: Understand methods to obfuscate actions and avoid detection by SIEM (Security Information and Event Management) systems.</li>
+<li><strong>Persistence</strong>: Analyze how to maintain access without making it obvious to defenders.</li>
+</ul>
+<h3 id="8-reporting-and-debriefing"><a class="header" href="#8-reporting-and-debriefing">8. Reporting and Debriefing</a></h3>
+<ul>
+<li><strong>Documentation</strong>: Prepare comprehensive reports that detail the methods used, vulnerabilities found, and the impact analysis.</li>
+<li><strong>Communication</strong>: Design a debriefing process that includes both technical staff and management to convey findings and recommendations.</li>
+</ul>
+<h3 id="9-continuous-learning"><a class="header" href="#9-continuous-learning">9. Continuous Learning</a></h3>
+<ul>
+<li><strong>Stay Updated</strong>: The threat landscape evolves rapidly. Follow cybersec blogs, attend workshops, and participate in Capture the Flag (CTF) competitions.</li>
+<li><strong>Certifications</strong>: Consider obtaining certifications like OSCP (Offensive Security Certified Professional) or CEH (Certified Ethical Hacker) to validate your skills.</li>
+</ul>
+<h3 id="10-ethical-considerations"><a class="header" href="#10-ethical-considerations">10. Ethical Considerations</a></h3>
+<ul>
+<li><strong>Legal Boundaries</strong>: Always operate within the legal frameworks and agreements, especially concerning authorized attacks. Understand the rules of engagement.</li>
+<li><strong>Scope</strong>: Clearly define the scope of the engagement to avoid unintended consequences.</li>
+</ul>
+<h3 id="11-emphasize-collaboration"><a class="header" href="#11-emphasize-collaboration">11. Emphasize Collaboration</a></h3>
+<ul>
+<li><strong>Team Dynamics</strong>: Collaborate effectively with blue teams. Share techniques and insights to enhance overall security posture.</li>
+<li><strong>Education</strong>: Lead workshops or training sessions to educate staff about security awareness and incident response.</li>
+</ul>
+<h3 id="final-tip-mock-scenarios"><a class="header" href="#final-tip-mock-scenarios">Final Tip: Mock Scenarios</a></h3>
+<ul>
+<li>Simulate real-life attack scenarios as practice, such as:
+<ul>
+<li>A ransomware attack on a corporate network.</li>
+<li>A zero-day exploit simulation against a public-facing application.</li>
+<li>Insider threat scenarios utilizing social engineering techniques.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Absolutely! Below is the expanded ASCII art hierarchy on cybersecurity attacks further elaborated with more TTPs (Tactics, Techniques, and Procedures) based on the MITRE ATT&amp;CK framework. Each section maintains the original structure with additional information added for clarity.</p>
+<pre><code>Cybersecurity Attacks
+├── Malware
+│   ├── Viruses
+│   │   └── Self-replicating programs that attach to files.
+│   ├── Worms
+│   │   └── Standalone malware that replicates itself to spread.
+│   ├── Trojans
+│   │   └── Disguised as legitimate software.
+│   └── Keyloggers
+│       └── Records keystrokes to harvest sensitive information.
+│
+│   TTPs (for Malware)
+│   ├── Initial Access
+│   │   └── Technique T1190: Exploit Public-Facing Application
+│   │       ├── Mitigation: Keep software up-to-date with patches.
+│   │       ├── Procedure: Regularly scan applications for vulnerabilities.
+│   │       ├── STIX Example:
+│   │       │   {
+│   │       │       &quot;type&quot;: &quot;attack-pattern&quot;,
+│   │       │       &quot;id&quot;: &quot;attack-pattern--00000000-0000-0000-0000-000000000001&quot;,
+│   │       │       &quot;name&quot;: &quot;Exploit Public-Facing Application&quot;,
+│   │       │       &quot;description&quot;: &quot;Exploitation of vulnerabilities in publicly accessible applications.&quot;
+│   │       │   }
+│   │       └── Sub-Procedures:
+│   │           ├── Implement web application firewalls.
+│   │           └── Conduct regular security assessments.
+│   ├── Execution
+│   │   ├── Technique T1203: User Execution
+│   │   │   └── Mitigation: Educate users about the dangers of executing unsolicited files.
+│   │   └── Technique T1059: Command and Scripting Interpreter
+│   │       └── Mitigation: Limit execution policies on endpoints.
+│   │   └── Technique T1204: User Training
+│   │       └── Mitigation: Conduct regular training sessions on safe computing practices.
+│   ├── Persistence
+│   │   └── Technique T1547: Boot or Logon Autostart Execution
+│   │       ├── Mitigation: Regularly review startup items.
+│   │       └── Procedure: Automate checks for unauthorized entries.
+│   │   └── Technique T1060: Registry Run Keys / Startup Folder
+│   │       ├── Mitigation: Monitor registry changes.
+│   │       └── Procedure: Implement policies for application whitelisting.
+│   ├── Exfiltration
+│   │   └── Technique T1041: Exfiltration Over Command and Control Channel
+│   │       ├── Mitigation: Encrypt sensitive data in transit.
+│   │       └── Procedure: Monitor outbound traffic for anomalies.
+│   │   └── Technique T1048: Exfiltration Over Other Network medium
+│   │       └── Mitigation: Categorize and limit access to sensitive data.
+│   │   └── Technique T1567: Exfiltration Over Web Service
+│   │       └── Mitigation: Use DLP solutions to monitor web traffic.
+│
+├── Phishing
+│   ├── Email Phishing
+│   │   └── Fraudulent emails to trick users.
+│   ├── Spear Phishing
+│   │   └── Targeted phishing to specific individuals.
+│   ├── Whaling
+│   │   └── Targeting high-profile individuals.
+│   └── Smishing
+│       └── Phishing via SMS messages.
+│
+│   TTPs (for Phishing)
+│   ├── Initial Access
+│   │   └── Technique T1566: Phishing
+│   │       ├── Mitigation: Train employees on phishing detection.
+│   │       ├── Procedure: Implement email filtering solutions.
+│   │       └── STIX Example:
+│   │           {
+│   │               &quot;type&quot;: &quot;attack-pattern&quot;,
+│   │               &quot;id&quot;: &quot;attack-pattern--3c4d5258-993b-4f8f-9b64-9e0bbc604c52&quot;,
+│   │               &quot;name&quot;: &quot;Spear Phishing&quot;,
+│   │               &quot;description&quot;: &quot;Phishing attacks targeted at specific individuals.&quot;
+│   │           }
+│   ├── Execution
+│   │   └── Technique T1203: User Execution
+│   │       ├── Mitigation: Educate users to avoid clicking on unknown links.
+│   │       └── Procedure: Implement sandboxing for suspicious email attachments.
+│   ├── Credential Access
+│   │   └── Technique T1078: Valid Accounts
+│   │       ├── Mitigation: Enforce 2FA on sensitive accounts.
+│   │       └── Procedure: Regularly audit user access and privileges.
+│   │   └── Technique T1555: Credentials from Password Stores
+│   │       ├── Mitigation: Use strong, unique passwords and password managers.
+│   │       └── Procedure: Regularly rotate passwords for critical accounts.
+│
+├── Ransomware
+│   ├── Locker Ransomware
+│   │   └── Locks user out of the system.
+│   └── Crypto Ransomware
+│       └── Encrypts files and demands payment for decryption.
+│
+│   TTPs (for Ransomware)
+│   ├── Impact
+│   │   └── Technique T1486: Data Encrypted for Impact
+│   │       ├── Mitigation: Backup data regularly and isolate backups.
+│   │       ├── Procedure: Implement an incident response plan for ransomware.
+│   │       └── STIX Example:
+│   │           {
+│   │               &quot;type&quot;: &quot;attack-pattern&quot;,
+│   │               &quot;id&quot;: &quot;attack-pattern--70c7a42d-279a-4e89-b4c3-b15a4059e2ac&quot;,
+│   │               &quot;name&quot;: &quot;Data Encrypted for Impact&quot;,
+│   │               &quot;description&quot;: &quot;Techniques that render data inaccessible to the victim.&quot;
+│   │           }
+│   ├── Credential Access
+│   │   └── Technique T1003: Credential Dumping
+│   │       ├── Mitigation: Use credential vaults.
+│   │       └── Procedure: Monitor for credential access patterns.
+│   │   └── Technique T1555: Credentials from Password Stores
+│   │       ├── Mitigation: Regularly monitor access logs.
+│   │       └── Procedure: Implement least privilege access for users.
+│
+├── Denial of Service (DoS)
+│   ├── Flood Attacks
+│   │   └── Overwhelming the target with traffic.
+│   ├── Application Layer Attacks
+│   │   └── Targeting specific application functions.
+│   └── Resource Exhaustion
+│       └── Exhausting server resources, like CPU or memory.
+│
+│   TTPs (for DoS)
+│   ├── Impact
+│   │   └── Technique T1499: Endpoint Denial of Service
+│   │       ├── Mitigation: Implement rate limiting.
+│   │       └── Procedure: Use intrusion detection systems to monitor traffic.
+│   └── Defense Evasion
+│       └── Technique T1040: Network Sniffing
+│           ├── Mitigation: Encrypt sensitive communications.
+│           └── Procedure: Deploy network traffic analysis tools.
+│
+├── SQL Injection
+│   ├── Classic SQL Injection
+│   │   └── Inserting malicious SQL queries.
+│   ├── Blind SQL Injection
+│   │   └── No visible error messages but still able to extract data.
+│   └── Time-Based SQL Injection
+│       └── Inferring data based on time delays.
+│
+│   TTPs (for SQL Injection)
+│   ├── Impact
+│   │   └── Technique T1503: Exploitation for Client Execution
+│   │       ├── Mitigation: Use prepared statements in queries.
+│   │       └── Procedure: Conduct regular security audits of database queries.
+│   └── Credential Access
+│       └── Technique T1555: Credentials from Password Stores
+│           ├── Mitigation: Use secure hashing functions for stored passwords.
+│           └── Procedure: Audit password policies regularly.
+│
+├── Cross-Site Scripting (XSS)
+│   ├── Stored XSS
+│   │   └── Injected script is stored on the server.
+│   ├── Reflected XSS
+│   │   └── Injected script is reflected off a web server.
+│   └── DOM-based XSS
+│       └── The vulnerability exists in the client-side code.
+│
+│   TTPs (for XSS)
+│   ├── Impact
+│   │   └── Technique T1134: Access Token Manipulation
+│   │       ├── Mitigation: Implement Content Security Policy (CSP).
+│   │       └── Procedure: Conduct code reviews focusing on input validation.
+│   └── Command and Control
+│       └── Technique T1071: Application Layer Protocol
+│           ├── Mitigation: Filter application layer traffic.
+│           └── Procedure: Utilize threat intelligence to monitor C2 communication.
+│
+├── Credential Stuffing
+│   └── Using stolen credentials to gain unauthorized access.
+│
+│   TTPs (for Credential Stuffing)
+│   ├── Initial Access
+│   │   └── Technique T1071: Application Layer Protocol
+│   │       ├── Mitigation: Monitor for unusual account activity.
+│   │       └── Procedure: Implement alerts for multiple failed login attempts.
+│   ├── Credential Access
+│   │   └── Technique T1040: Network Sniffing
+│   └── Defense Evasion
+│       └── Technique T1027: Obfuscated Files or Information
+│           ├── Mitigation: Monitor for unusual account activity.
+│           └── Procedure: Implement alerts for multiple failed login attempts.
+│
+├── Brute-Force Attack
+│   └── Finding passwords by trying many combinations.
+│
+│   TTPs (for Brute-Force Attack)
+│   ├── Credential Access
+│   │   └── Technique T1110: Brute Force
+│   │       ├── Mitigation: Implement account lockout policies.
+│   │       └── Procedure: Monitor and alert on multiple failed login attempts.
+│
+├── Session Hijacking
+│   └── Exploiting a valid computer session to gain unauthorized access. 
+│
+│   TTPs (for Session Hijacking)
+│   ├── Credential Access
+│   │   └── Technique T1071: Application Layer Protocol
+│   │       ├── Mitigation: Monitor for session anomalies.
+│   │       └── Procedure: Use secure tokens for session management.
+│   └── Impact
+│       └── Technique T1499: Endpoint Denial of Service
+│
+├── Zero-Day Exploit
+│   └── Attacks occurring on the same day a vulnerability is discovered.
+│
+│   TTPs (for Zero-Day Exploit)
+│   └── Initial Access
+│       └── Technique T1190: Exploit Public-Facing Application
+│
+├── Social Engineering
+│   └── Manipulating individuals into divulging confidential information.
+│
+│   TTPs (for Social Engineering)
+│   ├── Initial Access
+│   │   └── Technique T1566: Phishing
+│   └── Credential Access
+│       └── Technique T1555: Credentials from Password Stores
+│
+├── DNS Spoofing
+│   └── Corrupting the DNS cache to redirect traffic.
+│
+│   TTPs (for DNS Spoofing)
+│   └── Command and Control
+│       └── Technique T1071: Application Layer Protocol
+│           ├── Mitigation: Employ DNSSEC to protect against spoofing.
+│           └── Procedure: Regularly monitor DNS query logs.
+│
+├── Eavesdropping
+│   └── Intercepting private communications.
+│
+│   TTPs (for Eavesdropping)
+│   └── Collection
+│       └── Technique T1041: Exfiltration Over Command and Control Channel
+│           ├── Mitigation: Use encryption for sensitive communications.
+│           └── Procedure: Monitor for unexpected data transmissions.
+│
+├── Rogue Software
+│   └── Programs that perform malicious activities while appearing legitimate.
+│
+│   TTPs (for Rogue Software)
+│   └── Execution
+│       └── Technique T1203: User Execution
+│
+└── Rootkit
+    └── Software designed to grant unauthorized root access.
+    
+    TTPs (for Rootkit)
+    └── Persistence
+        └── Technique T1547: Boot or Logon Autostart Execution
+</code></pre>
+<hr />
+<h2 id="open-source-tools"><a class="header" href="#open-source-tools">Open source tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th><strong>Tool Name</strong></th><th><strong>Rating (Out of 5)</strong></th><th><strong>Popularity</strong></th><th><strong>Job Hunting Value</strong></th><th><strong>Open-Source</strong></th></tr></thead><tbody>
+<tr><td><strong>Kali Linux</strong></td><td>4.8</td><td>Very High</td><td>Strong</td><td>Yes</td></tr>
+<tr><td><strong>Metasploit</strong></td><td>4.7</td><td>High</td><td>Strong (frequently listed)</td><td>Yes</td></tr>
+<tr><td><strong>Burp Suite</strong></td><td>4.6</td><td>High</td><td>Strong (commonly sought)</td><td>No</td></tr>
+<tr><td><strong>Nessus</strong></td><td>4.5</td><td>High</td><td>Strong</td><td>No</td></tr>
+<tr><td><strong>Puppet</strong></td><td>4.5</td><td>High</td><td>Strong</td><td>Yes</td></tr>
+<tr><td><strong>Red Team Tools</strong></td><td>4.5</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong>AttackIQ</strong></td><td>4.5</td><td>Medium</td><td>Moderate</td><td>No</td></tr>
+<tr><td><strong>OpenVAS</strong></td><td>4.4</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong>SafeBreach</strong></td><td>4.4</td><td>Medium</td><td>Moderate</td><td>No</td></tr>
+<tr><td><strong>Core Impact</strong></td><td>4.3</td><td>Medium</td><td>Moderate</td><td>No</td></tr>
+<tr><td><strong>Cymulate</strong></td><td>4.2</td><td>Medium</td><td>Moderate</td><td>No</td></tr>
+<tr><td><strong>Nikto</strong></td><td>4.2</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+</tbody></table>
+</div>
+<h3 id="notes"><a class="header" href="#notes">Notes</a></h3>
+<ul>
+<li>The tools are now sorted by their ratings, with the highest-rated tools listed first.</li>
+<li>The popularity, job hunting value, and open-source status remain unchanged.</li>
+</ul>
+<h2 id="standards"><a class="header" href="#standards">Standards</a></h2>
+<p>These protocols and tools, along with <strong>MITRE CRITs</strong>, contribute to the broader ecosystem of:</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Threat intelligence sharing and analysis</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Open platforms for analysis</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Collaborating on threat data</li>
+</ul>
+<p>There are standard protocols and tools that are often associated with threat intelligence sharing and analysis, which can be complementary to MITRE CRITs. Below is a table summarizing some of these standard protocols and tools:</p>
+<p>Yes, there are standard protocols and tools that are often associated with threat intelligence sharing and analysis, which can be complementary to MITRE CRITs. Below is a table summarizing some of these standard protocols and tools:</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Standard/Protocol/Tool</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr><td><strong>STIX (Structured Threat Information Expression)</strong></td><td>A standardized language for describing cyber threat information, including indicators of compromise (IOCs), TTPs (Tactics, Techniques, and Procedures), and threat actor profiles.</td></tr>
+<tr><td><strong>TAXII (Trusted Automated eXchange of Indicator Information)</strong></td><td>A protocol for sharing threat intelligence in a structured way, enabling automated exchange of STIX data between organizations.</td></tr>
+<tr><td><strong>MISP (Malware Information Sharing Platform)</strong></td><td>An open-source threat intelligence platform designed to improve the sharing of structured threat information through collaboration and automation.</td></tr>
+<tr><td><strong>OpenDXL (Open Data Exchange Layer)</strong></td><td>A protocol designed for integrating various cybersecurity tools and sharing threat intelligence data between them.</td></tr>
+<tr><td><strong>CTI (Cyber Threat Intelligence) Frameworks</strong></td><td>Frameworks like ATT&amp;CK (Adversarial Techniques, Tactics, and Common Knowledge) facilitate understanding and sharing of threat actor behavior through standardized taxonomies.</td></tr>
+<tr><td><strong>OASIS Cyber Threat Intelligence (CTI) TC</strong></td><td>A consortium that develops and promotes standards for CTI, including STIX and TAXII.</td></tr>
+<tr><td><strong>Palo Alto Networks Autofocus</strong></td><td>An advanced threat intelligence service that provides context and analytics on threats and integrates with various security tools.</td></tr>
+<tr><td><strong>ThreatConnect</strong></td><td>A threat intelligence platform that allows users to collaborate, analyze threats, and manage their intelligence data.</td></tr>
+</tbody></table>
+</div>
+<h3 id="notes-1"><a class="header" href="#notes-1">Notes</a></h3>
+<ul>
+<li><strong>STIX and TAXII</strong> are particularly important because they are often used together for cyber threat intelligence sharing—STIX provides the structure for the data, while TAXII provides the means to exchange it.</li>
+<li><strong>MISP</strong> is a widely used platform that incorporates principles from STIX/TAXII but provides additional functionalities for collaboration.</li>
+<li><strong>OpenDXL</strong> supports interoperability between different tools and platforms, promoting integrated threat intelligence workflows.</li>
+</ul>
+<p>Common tools and standards related to STIX (Structured Threat Information Expression) and TAXII (Trusted Automated eXchange of Indicator Information).</p>
+<p>Sure! Here is the refined content with the requested formatting and hyperlinking improvements:</p>
+<h3 id="explanation-of-the-stix-additions"><a class="header" href="#explanation-of-the-stix-additions">Explanation of the STIX Additions</a></h3>
+<ul>
+<li><strong>Data Model:</strong> Categorizes various structure types of Threat Intelligence.</li>
+<li><strong>Observable:</strong> Specifies what types of IoCs exist, such as File Hash, IP Address, etc.</li>
+<li><strong>Indicator:</strong> Details the various indicators of compromise and their purposes.</li>
+<li><strong>Threat Actor:</strong> Outlines different categories of actors behind malicious activities.</li>
+<li><strong>Threat Campaign:</strong> Describes coordinated efforts by actors towards an objective.</li>
+<li><strong>Report:</strong> Indicates how threat data should be documented and shared.</li>
+<li><strong>Relationships:</strong> Illustrates the connections between the aforementioned entities, emphasizing their interdependencies and relevance within the threat intelligence landscape.</li>
+</ul>
+<pre><code class="language-plaintext">STIX
+├── Data Model
+│   ├── Observable
+│   │   ├── Types of IoCs:
+│   │   │   ├── File Hash (SHA256)
+│   │   │   ├── IP Address (e.g., 192.168.1.1)
+│   │   │   ├── Domain Name (e.g., malicious.com)
+│   │   │   └── URL (e.g., http://malicious.com)
+│   │   ├── Description: Represents entities within the context of threat intelligence.
+│   ├── Indicator
+│   │   ├── Types of Indicators:
+│   │   │   ├── Malware Indicators
+│   │   │   ├── Phishing URLs
+│   │   │   ├── Command and Control Domains
+│   │   │   └── Anomalous Activity Patterns
+│   │   ├── Description: Used to signify malicious intent detected by security appliances.
+│   ├── Threat Actor
+│   │   ├── Categories:
+│   │   │   ├── Organized Crime
+│   │   │   ├── Nation-State
+│   │   │   ├── Hacktivists
+│   │   │   └── Insiders
+│   │   ├── Description: Entities responsible for cyber threats.
+│   ├── Threat Campaign
+│   │   ├── Description: Coordination of tactics and techniques over a period for a specific objective.
+│   └── Report
+│       ├── Purpose: Provide comprehensive details, context, and analysis of threat data.
+│       └── Components:
+│           ├── Threat Description
+│           ├── Mitigation Recommendations
+│           └── Related Indicators
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th><strong>Tool/Standard Name</strong></th><th><strong>Rating (Out of 5)</strong></th><th><strong>Popularity</strong></th><th><strong>Job Hunting Value</strong></th><th><strong>Open-Source</strong></th></tr></thead><tbody>
+<tr><td><strong><a href="https://oasis-open.github.io/cti-stix2">STIX 2.0</a></strong></td><td>4.8</td><td>High</td><td>Strong</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://oasis-open.github.io/taxii">TAXII</a></strong></td><td>4.7</td><td>High</td><td>Strong</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://www.misp-project.org/">MISP (Malware Information Sharing Platform)</a></strong></td><td>4.6</td><td>High</td><td>Strong</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://oasis-open.github.io/cti-cybox">CybOX (Cyber Observable Expression)</a></strong></td><td>4.5</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://www.opendxl.com/">OpenDXL</a></strong></td><td>4.4</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://www.opencti.io/">OpenCTI</a></strong></td><td>4.4</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://threatconnect.com/">ThreatConnect</a></strong></td><td>4.3</td><td>Medium</td><td>Moderate</td><td>No</td></tr>
+<tr><td><strong><a href="https://otx.alienvault.com/">AlienVault OTX</a></strong></td><td>4.3</td><td>Medium</td><td>Moderate</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://virusshare.com/">VirusShare</a></strong></td><td>4.2</td><td>Medium</td><td>Low</td><td>Yes</td></tr>
+<tr><td><strong><a href="https://www.threatshare.com/">ThreatShare</a></strong></td><td>4.2</td><td>Medium</td><td>Low</td><td>No</td></tr>
+<tr><td><strong><a href="https://virustotal.github.io/yara/">YARA</a></strong></td><td>4.1</td><td>High</td><td>Moderate</td><td>Yes</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../other/interview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../risks/risks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../other/interview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../risks/risks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

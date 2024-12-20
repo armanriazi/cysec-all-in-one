@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>SSR - cysec-all-in-one(A.R)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../AboutMe.html"><strong aria-hidden="true">1.</strong> AboutMe</a></li><li class="chapter-item expanded "><a href="../INTRO.html"><strong aria-hidden="true">2.</strong> Introductory</a></li><li class="chapter-item expanded "><a href="../threats/threats.html"><strong aria-hidden="true">3.</strong> Threats</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../webapp/webapp.html"><strong aria-hidden="true">4.</strong> WebApplication</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../webapp/owasp.html"><strong aria-hidden="true">4.1.</strong> OWASP</a></li><li class="chapter-item "><a href="../webapp/objects.html"><strong aria-hidden="true">4.2.</strong> Objects</a></li><li class="chapter-item "><a href="../webapp/cors.html"><strong aria-hidden="true">4.3.</strong> CORS</a></li><li class="chapter-item "><a href="../webapp/api.html"><strong aria-hidden="true">4.4.</strong> APIs</a></li><li class="chapter-item expanded "><a href="../webapp/ssr.html" class="active"><strong aria-hidden="true">4.5.</strong> SSR</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../scan/scan.html"><strong aria-hidden="true">5.</strong> Scan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../scan/acunetix.html"><strong aria-hidden="true">5.1.</strong> acunetix</a></li></ol></li><li class="chapter-item expanded "><a href="../audit/audit.html"><strong aria-hidden="true">6.</strong> Audit</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../audit/nmap.html"><strong aria-hidden="true">6.1.</strong> nmap</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../identification.html"><strong aria-hidden="true">7.</strong> Identification</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../identification/accessibility/accessibility.html"><strong aria-hidden="true">7.1.</strong> Accessibility</a></li><li class="chapter-item "><a href="../identification/authentication/authentication.html"><strong aria-hidden="true">7.2.</strong> Authentication</a></li><li class="chapter-item "><a href="../identification/authorization/authorization.html"><strong aria-hidden="true">7.3.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../environment/environment.html"><strong aria-hidden="true">8.</strong> Environment</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../environment/kioptrix.html"><strong aria-hidden="true">8.1.</strong> Kioptrix</a></li></ol></li><li class="chapter-item expanded "><a href="../network/network.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/dns.html"><strong aria-hidden="true">9.1.</strong> DNS</a></li><li class="chapter-item "><a href="../network/firewall.html"><strong aria-hidden="true">9.2.</strong> Firewall</a></li><li class="chapter-item "><a href="../network/ids-ips.html"><strong aria-hidden="true">9.3.</strong> IDSIPS</a></li><li class="chapter-item "><a href="../network/proxy.html"><strong aria-hidden="true">9.4.</strong> Proxy</a></li><li class="chapter-item "><a href="../network/vpn.html"><strong aria-hidden="true">9.5.</strong> VPN</a></li><li class="chapter-item "><a href="../network/tools.html"><strong aria-hidden="true">9.6.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/tools-troubleshooting.html"><strong aria-hidden="true">9.6.1.</strong> Troubleshooting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/tools/troubleshooting/WIRESHARK.html"><strong aria-hidden="true">9.6.1.1.</strong> WIRESHARK</a></li></ol></li><li class="chapter-item "><a href="../network/tools/wireshark.html"><strong aria-hidden="true">9.6.2.</strong> wireshark</a></li><li class="chapter-item "><a href="../network/tools/snmp.html"><strong aria-hidden="true">9.6.3.</strong> Smnp</a></li><li class="chapter-item "><a href="../network/tools/onesixtyone.html"><strong aria-hidden="true">9.6.4.</strong> OneSixOne</a></li></ol></li><li class="chapter-item "><a href="../network/wireless.html"><strong aria-hidden="true">9.7.</strong> Wireless</a></li></ol></li><li class="chapter-item expanded "><a href="../cryptography/cryptography.html"><strong aria-hidden="true">10.</strong> Cryptography</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cryptography/token.html"><strong aria-hidden="true">10.1.</strong> Token</a></li><li class="chapter-item "><a href="../cryptography/pki.html"><strong aria-hidden="true">10.2.</strong> PKI</a></li></ol></li><li class="chapter-item expanded "><a href="../data/data.html"><strong aria-hidden="true">11.</strong> Data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data/bcdr.html"><strong aria-hidden="true">11.1.</strong> BCDR</a></li><li class="chapter-item "><a href="../data/raid.html"><strong aria-hidden="true">11.2.</strong> Raid</a></li><li class="chapter-item "><a href="../data/tools-bck.html"><strong aria-hidden="true">11.3.</strong> Tools</a></li></ol></li><li class="chapter-item expanded "><a href="../searchengine/searchengine.html"><strong aria-hidden="true">12.</strong> SearchEngine</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../searchengine/shodanhq.html"><strong aria-hidden="true">12.1.</strong> ShodanHQ</a></li></ol></li><li class="chapter-item expanded "><a href="../database/database.html"><strong aria-hidden="true">13.</strong> Databases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../database/google.html"><strong aria-hidden="true">13.1.</strong> Google</a></li></ol></li><li class="chapter-item expanded "><a href="../malware/malware.html"><strong aria-hidden="true">14.</strong> Malware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/anti-malware.html"><strong aria-hidden="true">14.1.</strong> AntiMalware</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../malware/tools.html"><strong aria-hidden="true">14.1.1.</strong> Tools</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../backtrack/backtrack.html"><strong aria-hidden="true">15.</strong> BackTrack</a></li><li class="chapter-item expanded "><a href="../penetrationtest/penetrationtest.html"><strong aria-hidden="true">16.</strong> PenetrationTest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/penetrationtest-tools.html"><strong aria-hidden="true">16.1.</strong> Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/metasploit.html"><strong aria-hidden="true">16.1.1.</strong> Metasploit</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/lynis.html"><strong aria-hidden="true">16.1.2.</strong> Lynis</a></li><li class="chapter-item "><a href="../penetrationtest/penetrationtest-tools/scanPBNJ.html"><strong aria-hidden="true">16.1.3.</strong> scanPBNJ</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux/linux.html"><strong aria-hidden="true">17.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/kali.html"><strong aria-hidden="true">17.1.</strong> Kali</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/kali/tools.html"><strong aria-hidden="true">17.1.1.</strong> Tools</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/ubuntu.html"><strong aria-hidden="true">17.2.</strong> Ubuntu</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/service.html"><strong aria-hidden="true">17.2.1.</strong> Service</a></li><li class="chapter-item "><a href="../linux/ubuntu/network.html"><strong aria-hidden="true">17.2.2.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/iptable.html"><strong aria-hidden="true">17.2.2.1.</strong> IPTable</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/os.html"><strong aria-hidden="true">17.2.3.</strong> OS</a></li><li class="chapter-item "><a href="../linux/ubuntu/log.html"><strong aria-hidden="true">17.2.4.</strong> Logger</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/user-management.html"><strong aria-hidden="true">17.2.5.</strong> UserManagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../linux/ubuntu/user-management/user.html"><strong aria-hidden="true">17.2.5.1.</strong> User</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/pam.html"><strong aria-hidden="true">17.2.5.2.</strong> PAM</a></li><li class="chapter-item "><a href="../linux/ubuntu/user-management/fail2ban.html"><strong aria-hidden="true">17.2.5.3.</strong> Fail2ban</a></li></ol></li><li class="chapter-item "><a href="../linux/ubuntu/lvm.html"><strong aria-hidden="true">17.2.6.</strong> LVM</a></li><li class="chapter-item "><a href="../linux/ubuntu/fs.html"><strong aria-hidden="true">17.2.7.</strong> FileSystem</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../protocols/protocols.html"><strong aria-hidden="true">18.</strong> Protocols</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../protocols/ssh.html"><strong aria-hidden="true">18.1.</strong> SSH</a></li><li class="chapter-item "><a href="../protocols/ssl.html"><strong aria-hidden="true">18.2.</strong> SSL</a></li><li class="chapter-item "><a href="../protocols/icmp.html"><strong aria-hidden="true">18.3.</strong> ICMP</a></li><li class="chapter-item "><a href="../protocols/arp.html"><strong aria-hidden="true">18.4.</strong> ARP</a></li><li class="chapter-item "><a href="../protocols/igmp.html"><strong aria-hidden="true">18.5.</strong> IGMP</a></li><li class="chapter-item "><a href="../protocols/smb.html"><strong aria-hidden="true">18.6.</strong> SMB</a></li></ol></li><li class="chapter-item expanded "><a href="../windows/windows.html"><strong aria-hidden="true">19.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../linux/opensuse/opensuse.html"><strong aria-hidden="true">20.</strong> OpenSuse</a></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">21.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">22.</strong> Git</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../frameworks/frameworks.html"><strong aria-hidden="true">23.</strong> Frameworks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../ai/ai.html"><strong aria-hidden="true">24.</strong> AI</a></li><li class="chapter-item expanded "><a href="../standards/standards.html"><strong aria-hidden="true">25.</strong> Standards</a></li><li class="chapter-item expanded "><a href="../other/other.html"><strong aria-hidden="true">26.</strong> Other</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/templates.html"><strong aria-hidden="true">26.1.</strong> Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../other/templates/security-assessment-template.html"><strong aria-hidden="true">26.1.1.</strong> Security-assessment-template</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-ics.html"><strong aria-hidden="true">26.1.2.</strong> Risk-assessment-template-ICS</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-iso.html"><strong aria-hidden="true">26.1.3.</strong> Risk-assessment-template-ISO</a></li><li class="chapter-item "><a href="../other/templates/risk-assessment-template-mobile.html"><strong aria-hidden="true">26.1.4.</strong> Risk-assessment-template-Mobile</a></li></ol></li><li class="chapter-item "><a href="../other/regulations.html"><strong aria-hidden="true">26.2.</strong> Regulations</a></li><li class="chapter-item "><a href="../other/assessment-steps.html"><strong aria-hidden="true">26.3.</strong> AssessmentSteps</a></li><li class="chapter-item "><a href="../other/interview.html"><strong aria-hidden="true">26.4.</strong> Interview</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../attack/attack.html"><strong aria-hidden="true">27.</strong> Attack</a></li><li class="chapter-item expanded "><a href="../risks/risks.html"><strong aria-hidden="true">28.</strong> Risks</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../WebSites.html"><strong aria-hidden="true">29.</strong> WebSites</a></li><li class="chapter-item expanded "><a href="../Glossery.html"><strong aria-hidden="true">30.</strong> Glossery</a></li><li class="chapter-item expanded "><a href="../Reference.html"><strong aria-hidden="true">31.</strong> Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">cysec-all-in-one(A.R)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/tree/main/workspace" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/armanriazi/cysec-all-in-one/edit/main/workspace/./workspace//webapp/ssr.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>To discover server-side technologies based on an HTTP response, you can follow these systematic steps. This process involves analyzing the request, examining the response headers, and using various tools and techniques to gather more information about the server.</p>
+<pre><code class="language-md">Discover Server-Side Technology in HTTP Response
+GET /auth/cdcservlet?goto=https%3A%2F%2Fpremium_tm.example-cc.jp%3A443%2F&amp;RequestID=29331&amp;MajorVersion=1&amp;MinorVersion=0&amp;ProviderID=https%3A%2F%2Fclus30oamsso301.example.net%3A443%2Famagent&amp;IssueInstant=2013-10-28T13%3A50%3A38Z HTTP/1.1
+Host: login.example.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: https://login.example.com/auth/UI/Login
+Cookie: JSESSIONID=2D7A9C1B95BA49EB7E36674137BD8DFA;    
+</code></pre>
+<h3 id="step-by-step-analysis"><a class="header" href="#step-by-step-analysis">Step-by-Step Analysis</a></h3>
+<ol>
+<li>
+<p><strong>Understand the HTTP Request Structure</strong>:</p>
+<ul>
+<li>The request provided shows a <code>GET</code> request directed at the URL <code>/auth/cdcservlet</code>.</li>
+<li>The <code>Host</code> header specifies the domain (<code>login.example.com</code>), and various other headers indicate the browser type, accepted content types, and session identifiers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Analyze the URL Path and Query Parameters</strong>:</p>
+<ul>
+<li>The path <code>/auth/cdcservlet</code> suggests that the server is likely running a Java-based application (e.g., Java Servlet).</li>
+<li>The presence of parameters in the query string (e.g., <code>goto</code>, <code>RequestID</code>, <code>MajorVersion</code>, <code>MinorVersion</code>, <code>ProviderID</code>, <code>IssueInstant</code>) might hint at functionalities related to session management or [SSO] (Single Sign-On).</li>
+</ul>
+</li>
+<li>
+<p><strong>Check Response Headers</strong>:</p>
+<ul>
+<li>Make a request to this URL and examine the HTTP response headers using developer tools available in browsers or tools like Postman, cURL, or browser extensions like HTTP Header Live.</li>
+<li>Look for <code>Server</code> headers, which often indicate the server type (e.g., Apache, Nginx, Microsoft-IIS).</li>
+<li>The <code>X-Powered-By</code> header can reveal information about the server technology (like PHP, ASP.NET, etc.).</li>
+<li>See if there are any other custom headers that provide insights into the framework or language (like <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, etc.).</li>
+</ul>
+</li>
+<li>
+<p><strong>Look for Technology-Specific Patterns</strong>:</p>
+<ul>
+<li>Evaluate any other endpoints or URLs. For example, <code>.jsp</code> or <code>.php</code> extensions in resources may indicate the use of specific technologies.</li>
+<li>Check for patterns in the API structure or response payloads that might suggest the use of frameworks (e.g., Spring, Laravel).</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Online Tools</strong>:</p>
+<ul>
+<li>Utilize tools such as <strong>BuiltWith</strong>, <strong>Wappalyzer</strong>, or <strong>Netcraft</strong> to analyze the website. These tools can give you an overview of the technologies the site uses based on various fingerprints.</li>
+<li>You can also use <strong>Nmap</strong> with the <code>http-server-header</code> script to enumerate servers and determine technologies.</li>
+</ul>
+</li>
+</ol>
+<p>Here’s a comparison table of some popular online tools for website technology analysis, such as BuiltWith, Wappalyzer, and Netcraft. The comparison considers features such as rating, open-source availability, and community engagement.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Rating</th><th>Open Source</th><th>Community Engagement</th><th>Features</th></tr></thead><tbody>
+<tr><td><strong>BuiltWith</strong></td><td>4.5/5</td><td>No</td><td>Low</td><td>Provides detailed technology and analytics on websites, with various subscription options for deeper insights.</td></tr>
+<tr><td><strong>Wappalyzer[T1]</strong></td><td>4.7/5</td><td>Yes</td><td>Medium</td><td>Offers a browser extension and API to detect technologies used on websites. Supports a wide range of platforms.</td></tr>
+<tr><td><strong>Netcraft</strong></td><td>4.3/5</td><td>No</td><td>Low</td><td>Primarily focused on internet security and tracking uptime, with a robust database of web technologies.</td></tr>
+<tr><td><strong>SimilarTech</strong></td><td>4.2/5</td><td>No</td><td>Medium</td><td>Provides insights on technology usage, trends, and offers competitive analysis tools.</td></tr>
+<tr><td><strong>IsItWP</strong></td><td>4.0/5</td><td>No</td><td>Medium</td><td>Specifically focuses on WordPress sites to analyze themes and plugins but with limited broader technology insights.</td></tr>
+</tbody></table>
+</div>
+<ol start="6">
+<li>
+<p><strong>Explore Server Response Content</strong>:</p>
+<ul>
+<li>Inspect the body of the HTTP response for comments, scripts, or other identifiers. Some applications may leave version numbers or technology-specific files within their HTML source.</li>
+</ul>
+</li>
+<li>
+<p><strong>Perform Fingerprinting</strong>:</p>
+<ul>
+<li>Use fingerprinting tools (e.g., <strong>WhatWeb</strong>, <strong>Webtech</strong>, or <strong>Detectify</strong>) to scan the server and identify technologies.</li>
+<li>These tools analyze the headers, response patterns, and any resources loaded to determine the server software.</li>
+</ul>
+</li>
+</ol>
+<p>Here’s a comparison table of some popular fingerprinting tools used for identifying web technologies like WhatWeb, Webtech, and Detectify. The comparison includes ratings, open-source availability, and community engagement.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Rating</th><th>Open Source</th><th>Community Engagement</th><th>Features</th></tr></thead><tbody>
+<tr><td><strong>WhatWeb[T1]</strong></td><td>4.6/5</td><td>Yes</td><td>Medium</td><td>A customizable tool that detects web technologies by analyzing headers, cookies, and HTML content.</td></tr>
+<tr><td><strong>Webtech</strong></td><td>4.3/5</td><td>Yes</td><td>Low</td><td>A straightforward tool that identifies technologies by checking HTTP headers and responses.</td></tr>
+<tr><td><strong>Detectify</strong></td><td>4.5/5</td><td>No</td><td>Medium</td><td>A comprehensive security tool that offers technology detection alongside vulnerability scanning.</td></tr>
+<tr><td><strong>BuiltWith</strong></td><td>4.5/5</td><td>No</td><td>Low</td><td>More of a service than a tool; provides technology stacks used by websites, but not focused solely on fingerprinting.</td></tr>
+<tr><td><strong>Wappalyzer</strong></td><td>4.7/5</td><td>Yes</td><td>Medium</td><td>A versatile tool with browser extensions that detects various technologies used on websites dynamically.</td></tr>
+</tbody></table>
+</div>
+<ol start="8">
+<li>
+<p><strong>Monitor Cookies and Sessions</strong>:</p>
+<ul>
+<li>Examine cookies sent by the server (like <code>JSESSIONID</code>) and any session management practices suggested by their usage. Java applications typically use <code>JSESSIONID</code>, which implies a Java Servlet container.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explore Error Pages</strong>:</p>
+<ul>
+<li>Generate a few invalid requests intentionally. Often, error responses contain valuable information about the underlying framework in the messages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Check for Versioning Information</strong>:</p>
+</li>
+</ol>
+<ul>
+<li>If applicable, look for version strings in headers, comments, or error messages. Server software often unintentionally exposes these details through poorly configured error handling.</li>
+</ul>
+<ol start="11">
+<li><strong>Review Any Redirects</strong>:</li>
+</ol>
+<ul>
+<li>If the response contains redirects (3xx status codes), examine the final destination with the same analysis efforts. Sometimes a different server provides more concrete information.</li>
+</ul>
+<h3 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h3>
+<p>By following these steps, you can systematically uncover server-side technologies behind an HTTP response. Always practice responsible disclosure and ethical considerations when analyzing web technologies, respecting privacy and security.</p>
+<p>Discovering hidden functionalities in a web application can involve a combination of manual testing and automated tools. This process often requires security testing techniques that may include looking for [S2]<strong>unlinked pages, hidden endpoints, and features not immediately visible to regular users</strong>. Here’s a real-world example, demonstrating how to approach this step-by-step.</p>
+<h2 id="entry-point-example"><a class="header" href="#entry-point-example">Entry-Point example</a></h2>
+<p>Let’s first correct the OCR mistakes in the provided string and then analyze it step-by-step to discover server-side technologies.</p>
+<h3 id="corrected-string"><a class="header" href="#corrected-string">Corrected String</a></h3>
+<p>Here’s the corrected version of the string with potential OCR errors fixed:</p>
+<pre><code class="language-plaintext">GET /auth/cdcservlet?goto=https%3A%2F%2Fpremium.example-cc.jp%3A443%2F&amp;RequestID=29331&amp;MajorVersion=1&amp;MinorVersion=0&amp;ProviderID=https%3A%2F%2Fdus30oamsso301.example.net%3A443%2Famagent&amp;IssueInstant=2013-10-28T13%3A50%3A38Z HTTP/1.1
+Host: login.example.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: https://login.example.com/auth/UI/Login
+Cookie: JSESSIONID=2D7A9C1B95BA49EB7E36674137BD8DFA;
+</code></pre>
+<h3 id="analysis-to-discover-server-side-technology"><a class="header" href="#analysis-to-discover-server-side-technology">Analysis to Discover Server-Side Technology</a></h3>
+<p>To discover the server-side technology based on the corrected string, follow these steps:</p>
+<h4 id="step-1-analyze-the-request-structure"><a class="header" href="#step-1-analyze-the-request-structure">Step 1: Analyze the Request Structure</a></h4>
+<ul>
+<li>
+<p><strong>Endpoint</strong>: The endpoint <code>/auth/cdcservlet</code> suggests a servlet, likely indicating a Java-based backend (e.g., an application running on a Java servlet container like Apache Tomcat).</p>
+</li>
+<li>
+<p><strong>Query Parameters</strong>:</p>
+<ul>
+<li><code>goto</code>, <code>RequestID</code>, <code>MajorVersion</code>, <code>MinorVersion</code>, <code>ProviderID</code>, <code>IssueInstant</code> suggests functionality related to authentication.</li>
+<li>Investigate how these parameters behave when modified.</li>
+</ul>
+</li>
+</ul>
+<h4 id="step-2-check-for-response-headers"><a class="header" href="#step-2-check-for-response-headers">Step 2: Check for Response Headers</a></h4>
+<ul>
+<li><strong>Use Developer Tools / HTTP Client</strong>: Use tools like Burp Suite, Postman, or browser Developer Tools to examine the response headers when hitting the endpoint.
+<ul>
+<li>Look for:
+<ul>
+<li><code>Server</code> header: Might indicate if it’s running on Apache, Nginx, etc.</li>
+<li><code>X-Powered-By</code> header: Can indicate the underlying language/framework (like PHP, Express, etc.).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="step-3-explore-http-responses"><a class="header" href="#step-3-explore-http-responses">Step 3: Explore HTTP Responses</a></h4>
+<ul>
+<li><strong>Make Requests</strong>: Send a request to the endpoint and observe the HTTP responses.</li>
+<li><strong>Look for Error Messages</strong>: Check if invalid requests return distinctive error messages that might divulge technology information (e.g., stack traces).</li>
+</ul>
+<h4 id="step-4-analyze-htmljs-responses"><a class="header" href="#step-4-analyze-htmljs-responses">Step 4: Analyze HTML/JS Responses</a></h4>
+<ul>
+<li><strong>Inspect Response Body</strong>:
+<ul>
+<li>Check for comments in HTML or JavaScript files and look for specific libraries or framework references.</li>
+<li>Analyze any JavaScript files loaded on the page for library detections or exposed APIs.</li>
+</ul>
+</li>
+</ul>
+<h4 id="step-5-directory-and-endpoint-enumeration"><a class="header" href="#step-5-directory-and-endpoint-enumeration">Step 5: Directory and Endpoint Enumeration</a></h4>
+<ul>
+<li><strong>Brute-forcing</strong>: Utilize tools like <code>Gobuster</code> or <code>Dirb</code> to enumerate directories and files.</li>
+<li><strong>Common Endpoints</strong>: Try common endpoints and see if valid responses are returned. For example, changing <code>/account/view?id=123</code> to <code>/account/view?id=124</code>.</li>
+</ul>
+<p>Absolutely! There are several additional common endpoints that are often found in web applications, and it’s beneficial to include them for more comprehensive testing. Here’s an extension of your original list with new common endpoints:</p>
+<h5 id="additional-common-endpoints"><a class="header" href="#additional-common-endpoints">Additional Common Endpoints</a></h5>
+<p>Sure! Below is the merged table containing both the original and additional common endpoints for web applications:</p>
+<h3 id="common-endpoints"><a class="header" href="#common-endpoints">Common Endpoints</a></h3>
+<ul>
+<li><a href="./objects.html">Web objects</a></li>
+</ul>
+<h5 id="variations-for-testing"><a class="header" href="#variations-for-testing">Variations for Testing</a></h5>
+<ul>
+<li>
+<p>Modify query parameters in endpoints:</p>
+<ul>
+<li>From <code>/account/view?id=123</code> to <code>/account/view?id=124</code>, etc.</li>
+<li>From <code>/api/data?query=abc</code> to <code>/api/data?query=xyz</code>.</li>
+</ul>
+</li>
+<li>
+<p>Common suffixes to try with paths:</p>
+<ul>
+<li><code>/admin.php</code>, <code>/admin.html</code>, <code>/admin.jsp</code>, <code>/admin.asp</code> (depending on the technology stack).</li>
+</ul>
+</li>
+<li>
+<p>Look for versioning in APIs:</p>
+<ul>
+<li>Example: <code>/api/v1/users</code>, <code>/api/v2/orders</code>, etc.</li>
+</ul>
+</li>
+</ul>
+<h5 id="variations-for-testing-1"><a class="header" href="#variations-for-testing-1">Variations for Testing</a></h5>
+<ul>
+<li>
+<p><strong>Login &amp; Authentication:</strong></p>
+<ul>
+<li>Test variations on login credentials, like <code>/?username=test&amp;password=wrongpass</code>, to evaluate security.</li>
+</ul>
+</li>
+<li>
+<p><strong>Subdirectories and Subdomains:</strong></p>
+<ul>
+<li>Look for subdomains such as <code>admin.domain.com</code> or <code>api.domain.com</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Access Control Variants:</strong></p>
+<ul>
+<li>Test user role variations on endpoints, like <code>/admin/users</code>, <code>/admin/settings</code>, etc.</li>
+</ul>
+</li>
+</ul>
+<h4 id="step-6-check-for-vulnerabilities"><a class="header" href="#step-6-check-for-vulnerabilities">Step 6: Check for Vulnerabilities</a></h4>
+<ul>
+<li><strong>Security Scanners</strong>: Use tools like OWASP ZAP or Burp Suite Scanner to look for vulnerabilities in the application that might expose hidden features or misconfigurations.</li>
+</ul>
+<h4 id="step-7-manual-testing-of-parameters"><a class="header" href="#step-7-manual-testing-of-parameters">Step 7: Manual Testing of Parameters</a></h4>
+<ul>
+<li><strong>Parameter Tampering</strong>: Change values of the query parameters and headers to see how the server responds.</li>
+<li><strong>Try variants</strong> like <code>?goto=.....</code> with different values to check for potential unlinked pages.</li>
+</ul>
+<h4 id="step-8-utilize-online-tools"><a class="header" href="#step-8-utilize-online-tools">Step 8: Utilize Online Tools</a></h4>
+<ul>
+<li><strong>Technology Profilers</strong>: Use tools like BuiltWith, Wappalyzer, or Netcraft to analyze response characteristics and potential server technologies.</li>
+</ul>
+<h3 id="conclusion-1"><a class="header" href="#conclusion-1">Conclusion</a></h3>
+<p>By following these steps, you can systematically explore the server-side technologies and discover functionalities hidden behind the HTTP request. Always remember to perform these activities ethically and in compliance with legal guidelines.</p>
+<h3 id="example-scenario-discovering-hidden-functionality-in-a-web-application"><a class="header" href="#example-scenario-discovering-hidden-functionality-in-a-web-application">Example Scenario: Discovering Hidden Functionality in a Web Application</a></h3>
+<p><strong>Target Application:</strong> A fictional online banking application.</p>
+<h3 id="step-1-information-gathering"><a class="header" href="#step-1-information-gathering">Step 1: Information Gathering</a></h3>
+<ol>
+<li>
+<p><strong>Understand the Application</strong>:</p>
+<ul>
+<li>Familiarize yourself with the application through its frontend (login pages, features, etc.).</li>
+<li>Identify standard functionalities (e.g., account login, balance inquiries, transferring funds).</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Tools</strong>:</p>
+<ul>
+<li>Utilize a web application scanner (like <strong>Burp Suite</strong>, <strong>OWASP ZAP</strong>, or <strong>Nikto</strong>) to enumerate endpoints and check for vulnerabilities.</li>
+<li>Manually browse the website to identify various links, features, and error handling messages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Check Robots.txt</strong>:</p>
+<ul>
+<li>Access <code>http://example.com/robots.txt</code> to identify disallowed directories that may lead to hidden functionality.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-2-exploring-urls-and-parameters"><a class="header" href="#step-2-exploring-urls-and-parameters">Step 2: Exploring URLs and Parameters</a></h3>
+<ol start="4">
+<li>
+<p><strong>Enumerate Common Endpoints</strong>:</p>
+<ul>
+<li>Begin by manually changing parameters in the URL. For example, changing <code>/account/view?id=123</code> to <code>/account/view?id=124</code>, or testing common endpoints like <code>/admin</code>, <code>/settings</code>, <code>/config</code>, or <code>/api</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Identify Hidden Pages</strong>:</p>
+<ul>
+<li>Use a tool like <strong>Dirb</strong> or <strong>Gobuster</strong> to brute-force directory names from a wordlist. This can reveal hidden admin panels, documentation, or other resources not linked from the main application.</li>
+</ul>
+</li>
+</ol>
+<p>Here’s a comparison table for tools commonly used to identify hidden pages through directory brute-forcing, such as Dirb and Gobuster. This table includes ratings, open-source availability, and community engagement.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Rating</th><th>Open Source</th><th>Community Engagement</th><th>Features</th></tr></thead><tbody>
+<tr><td><strong>Gobuster[T1]</strong></td><td>4.8/5</td><td>Yes</td><td>High</td><td>Fast and efficient tool written in Go for brute-forcing URLs and directories, highly customizable. Supports recursive mode.</td></tr>
+<tr><td><strong>Dirb</strong></td><td>4.5/5</td><td>Yes</td><td>Medium</td><td>A simple command-line tool for brute-forcing directories and files using a wordlist.</td></tr>
+<tr><td><strong>FFUF</strong></td><td>4.7/5</td><td>Yes</td><td>High</td><td>Flexible fuzzing tool for web directories and resources, supports various input types and output formats.</td></tr>
+<tr><td><strong>DIRSEARCH</strong></td><td>4.6/5</td><td>Yes</td><td>Medium</td><td>A powerful tool for directory and file scanning, written in Python, which can be easily extended with custom wordlists.</td></tr>
+<tr><td><strong>Finding</strong></td><td>4.4/5</td><td>Yes</td><td>Low</td><td>A customizable tool that provides a simple method for scanning directories and files with support for different HTTP methods.</td></tr>
+</tbody></table>
+</div>
+<h3 id="step-3-examine-response-variations"><a class="header" href="#step-3-examine-response-variations">Step 3: Examine Response Variations</a></h3>
+<ol start="6">
+<li>
+<p><strong>Analyze HTTP Responses</strong>:</p>
+<ul>
+<li>Use tools like Burp Suite’s proxy to capture and analyze HTTP responses. Look for inconsistencies or unusual status codes (e.g., a normal login page returning a different response for an invalid user versus a valid one).</li>
+</ul>
+</li>
+<li>
+<p><strong>Check for Query String Parameters</strong>:</p>
+<ul>
+<li>Test various parameters and their combinations in the URLs, like <code>?debug=true</code>, which might reveal additional debugging information or functionalities.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-4-test-existing-functionality"><a class="header" href="#step-4-test-existing-functionality">Step 4: Test Existing Functionality</a></h3>
+<ol start="8">
+<li><strong>Inspect Forms</strong>:
+<ul>
+<li>Analyze forms available on the website. Look for fields like <code>hidden inputs</code>, parameters not immediately visible which can manipulate requests.</li>
+<li>Try injecting extra data via the forms to see how the application responds (e.g., SQL injection attempts, special characters).</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-5-use-automated-testing-tools"><a class="header" href="#step-5-use-automated-testing-tools">Step 5: Use Automated Testing Tools</a></h3>
+<ol start="9">
+<li><strong>Run Automated Scans</strong>:
+<ul>
+<li>Use tools like Burp Scanner or OWASP ZAP to run automated tests on your application. These tools can help identify vulnerabilities including SQL injection, XSS, or misconfigured settings that may expose hidden functionalities.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-6-analyze-client-side-code"><a class="header" href="#step-6-analyze-client-side-code">Step 6: Analyze Client-Side Code</a></h3>
+<ol start="10">
+<li><strong>Inspect Client-Side Code</strong>:
+<ul>
+<li>Check JavaScript files for commented-out code or references to functions that may indicate hidden or unlinked functionality.</li>
+<li>Use browser developer tools (like Chrome DevTools) to inspect the source code and network requests that might reveal additional endpoints activated by specific actions.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-7-refine-your-approach"><a class="header" href="#step-7-refine-your-approach">Step 7: Refine Your Approach</a></h3>
+<ol start="11">
+<li>
+<p><strong>Iterate on Findings</strong>:</p>
+<ul>
+<li>If any hidden functionalities are discovered, analyze how they can be accessed. Document what you find and create test cases.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exploit Vulnerabilities</strong> (if applicable):</p>
+<ul>
+<li>Once hidden functionalities are discovered, determine if there are vulnerabilities present that allow unauthorized access, data extraction, etc.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-8-report-findings"><a class="header" href="#step-8-report-findings">Step 8: Report Findings</a></h3>
+<ol start="13">
+<li><strong>Create a Comprehensive Report</strong>:
+<ul>
+<li>Summarize your activities, findings (including screenshots and examples), and recommendations for securing uncovered functionalities.</li>
+</ul>
+</li>
+</ol>
+<h3 id="conclusion-2"><a class="header" href="#conclusion-2">Conclusion</a></h3>
+<p>By following these steps, you can systematically discover hidden functionalities in a web application. Always ensure you have permission before testing applications and adhere to ethical guidelines and legal requirements.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../webapp/api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../scan/scan.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../webapp/api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../scan/scan.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
